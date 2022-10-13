@@ -12,7 +12,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - Background
+  - 
   - Player
   - 
   - 
@@ -36,7 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Background
   m_SortingLayers:
   - name: Default
     uniqueID: 0
