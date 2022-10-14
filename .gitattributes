@@ -52,3 +52,7 @@
 *.prefab linguist-generated
 *.unity linguist-generated
 *.aar filter=lfs diff=lfs merge=lfs -text
+# Yarn Spinner
+*.yarn filter=lfs diff=lfs merge=lfs -text
+*.yarnproject filter=lfs diff=lfs merge=lfs -text
+
