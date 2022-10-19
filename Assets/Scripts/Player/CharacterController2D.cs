@@ -16,18 +16,22 @@ public class CharacterController2D : MonoBehaviour
     public float gravityScale = 20.0f;
 
     // components attached to player
-    private BoxCollider2D coll;
-    private Rigidbody2D rb;
+    private CapsuleCollider2D playerCollider;
+    private BoxCollider2D boxCollider;
+    private Rigidbody2D myRigidbody;
+    private Animator animator;
 
     // other
-    private bool isGrounded = false;
+    // private bool isGrounded = false;
 
     private void Awake()
     {
-        coll = GetComponent<BoxCollider2D>();
-        rb = GetComponent<Rigidbody2D>();
+        myRigidbody = GetComponent<Rigidbody2D>();
+        playerCollider = GetComponent<CapsuleCollider2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
+        animator = GetComponent<Animator>();
 
-        rb.gravityScale = gravityScale;
+        myRigidbody.gravityScale = gravityScale;
     }
 
     private void FixedUpdate()
@@ -37,61 +41,64 @@ public class CharacterController2D : MonoBehaviour
             return;
         }
 
-        UpdateIsGrounded();
+        // UpdateIsGrounded();
 
         HandleHorizontalMovement();
 
         HandleJumping();
+
+        FlipSprite();
     }
 
-    private void UpdateIsGrounded()
-    {
-        // Bounds colliderBounds = coll.bounds;
-        // float colliderRadius = coll.size.x * 0.4f * Mathf.Abs(transform.localScale.x);
-        // Vector3 groundCheckPos = colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, colliderRadius * 0.9f, 0);
-        // // Check if player is grounded
-        // Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheckPos, colliderRadius);
-        // // Check if any of the overlapping colliders are not player collider, if so, set isGrounded to true
-        // this.isGrounded = false;
-        // if (colliders.Length > 0)
-        // {
-        //     for (int i = 0; i < colliders.Length; i++)
-        //     {
-        //         if (colliders[i] != coll)
-        //         {
-        //             this.isGrounded = true;
-        //             break;
-        //         }
-        //     }
-        // }
+    // private void UpdateIsGrounded()
+    // {
 
-        if(!coll.IsTouchingLayers(LayerMask.GetMask("Ground"))){ return; }
-        else
-        {
-            this.isGrounded = true;
-        }
-        if (this.isGrounded){
+    //     if(!playerCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))){ return; }
+    //     else
+    //     {
+    //         this.isGrounded = true;
+    //     }
+    //     if (this.isGrounded){
 
-        }
+    //     }
 
-    }
+    // }
 
     private void HandleHorizontalMovement()
     {
         Vector2 moveDirection = InputManager.GetInstance().GetMoveDirection();
-        rb.velocity = new Vector2(moveDirection.x * runSpeed, rb.velocity.y);
+        myRigidbody.velocity = new Vector2(moveDirection.x * runSpeed, myRigidbody.velocity.y);
+
+        bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
+        animator.SetBool("isWalking", playerHasHorizontalSpeed);
     }
 
     private void HandleJumping()
     {
         bool jumpPressed = InputManager.GetInstance().GetJumpPressed();
 
-        if(!coll.IsTouchingLayers(LayerMask.GetMask("Ground"))){ return; }
-        
         if (jumpPressed)
         {
-            isGrounded = false;
-            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+            Debug.Log("jump");
+        }
+
+        if(!boxCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))){ return; }
+        
+
+        if (jumpPressed)
+        {
+            // isGrounded = false;
+            myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpSpeed);
+        }
+    }
+
+    private void FlipSprite()
+    {
+        bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
+
+        if(playerHasHorizontalSpeed)
+        {
+            transform.localScale = new Vector2 (Mathf.Sign(myRigidbody.velocity.x), 1f);
         }
     }
 

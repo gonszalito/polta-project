@@ -44,16 +44,24 @@ public class DialogueManager : MonoBehaviour
     {
         SetDialogueOnTalkingCharacter();
         dialogueIsPlaying = false;
+        
+        if (dialoguePanel != null)
+        {
         dialoguePanel.SetActive(false);
+        }
 
         // get all of the choices text 
-        choicesText = new TextMeshProUGUI[choices.Length];
-        int index = 0;
-        foreach (GameObject choice in choices) 
-        {
-            choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
-            index++;
-        }
+
+        // if( choices != null)
+        // {
+        //     choicesText = new TextMeshProUGUI[choices.Length];
+        //     int index = 0;
+        //     foreach (GameObject choice in choices) 
+        //     {
+        //         choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
+        //         index++;
+        //     }
+        // }
     }
 
     private void Update() 
@@ -100,8 +108,8 @@ public class DialogueManager : MonoBehaviour
         {
             // set text for the current dialogue line
             dialogueText.text = currentStory.Continue();
-            // display choices, if any, for this dialogue line
-            DisplayChoices();
+                // display choices, if any, for this dialogue line
+            // DisplayChoices();
         }
         else 
         {
@@ -109,33 +117,33 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private void DisplayChoices() 
-    {
-        List<Choice> currentChoices = currentStory.currentChoices;
+    // private void DisplayChoices() 
+    // {
+    //     List<Choice> currentChoices = currentStory.currentChoices;
 
-        // defensive check to make sure our UI can support the number of choices coming in
-        if (currentChoices.Count > choices.Length)
-        {
-            Debug.LogError("More choices were given than the UI can support. Number of choices given: " 
-                + currentChoices.Count);
-        }
+    //     // defensive check to make sure our UI can support the number of choices coming in
+    //     if (currentChoices.Count > choices.Length)
+    //     {
+    //         Debug.LogError("More choices were given than the UI can support. Number of choices given: " 
+    //             + currentChoices.Count);
+    //     }
 
-        int index = 0;
-        // enable and initialize the choices up to the amount of choices for this line of dialogue
-        foreach(Choice choice in currentChoices) 
-        {
-            choices[index].gameObject.SetActive(true);
-            choicesText[index].text = choice.text;
-            index++;
-        }
-        // go through the remaining choices the UI supports and make sure they're hidden
-        for (int i = index; i < choices.Length; i++) 
-        {
-            choices[i].gameObject.SetActive(false);
-        }
+    //     int index = 0;
+    //     // enable and initialize the choices up to the amount of choices for this line of dialogue
+    //     foreach(Choice choice in currentChoices) 
+    //     {
+    //         choices[index].gameObject.SetActive(true);
+    //         choicesText[index].text = choice.text;
+    //         index++;
+    //     }
+    //     // go through the remaining choices the UI supports and make sure they're hidden
+    //     for (int i = index; i < choices.Length; i++) 
+    //     {
+    //         choices[i].gameObject.SetActive(false);
+    //     }
 
-        StartCoroutine(SelectFirstChoice());
-    }
+    //     StartCoroutine(SelectFirstChoice());
+    // }
 
     private IEnumerator SelectFirstChoice() 
     {
@@ -156,7 +164,6 @@ public class DialogueManager : MonoBehaviour
 
     public void SetDialogueOnTalkingCharacter()
     {
-        Debug.Log("set 1 done");
         GameObject character;
         character = GameObject.FindWithTag("Player");
         // Sets the dialogue position
@@ -165,12 +172,12 @@ public class DialogueManager : MonoBehaviour
 
     private void SetDialoguePosition(GameObject character)
     {
-        Debug.Log("set 2 done");
+        if(dialogueUI != null)
+        {
         // Retrieve the position where the top part of the sprite is in the world
         float characterSpriteHeight = character.GetComponent<SpriteRenderer>().bounds.size.y;
         float characterColliderHeight = character.GetComponent<Collider2D>().bounds.size.y;
         // float characterRendererHeight = character.GetComponent<Renderer>().bounds.size.y;
-        Debug.Log(characterSpriteHeight);
         
         // Create position with the sprite top location
         Vector3 characterPosition = new Vector3(character.transform.position.x,
@@ -179,6 +186,7 @@ public class DialogueManager : MonoBehaviour
 
         // Set the DialogueBubble position to the sprite top location in Screen Space
         dialogueUI.transform.position = cam.WorldToScreenPoint(characterPosition);
+        }
     }
 
 }
