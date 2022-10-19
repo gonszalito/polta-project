@@ -10,6 +10,7 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private GameObject dialogueUI;
     [SerializeField] private TextMeshProUGUI dialogueText;
 
     [Header("Choices UI")]
@@ -21,8 +22,12 @@ public class DialogueManager : MonoBehaviour
 
     private static DialogueManager instance;
 
+    private Camera cam;
+
+
     private void Awake() 
-    {
+    {   
+        cam = Camera.main;
         if (instance != null)
         {
             Debug.LogWarning("Found more than one Dialogue Manager in the scene");
@@ -37,6 +42,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Start() 
     {
+        SetDialogueOnTalkingCharacter();
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
 
@@ -52,11 +58,14 @@ public class DialogueManager : MonoBehaviour
 
     private void Update() 
     {
+        
+        SetDialogueOnTalkingCharacter();
         // return right away if dialogue isn't playing
         if (!dialogueIsPlaying) 
         {
             return;
         }
+        
 
         // handle continuing to the next line in the dialogue when submit is pressed
         // NOTE: The 'currentStory.currentChoiecs.Count == 0' part was to fix a bug after the Youtube video was made
@@ -70,6 +79,7 @@ public class DialogueManager : MonoBehaviour
     {
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
+        
         dialoguePanel.SetActive(true);
 
         ContinueStory();
@@ -142,6 +152,33 @@ public class DialogueManager : MonoBehaviour
         // NOTE: The below two lines were added to fix a bug after the Youtube video was made
         InputManager.GetInstance().RegisterSubmitPressed(); // this is specific to my InputManager script
         ContinueStory();
+    }
+
+    public void SetDialogueOnTalkingCharacter()
+    {
+        Debug.Log("set 1 done");
+        GameObject character;
+        character = GameObject.FindWithTag("Player");
+        // Sets the dialogue position
+        SetDialoguePosition(character);
+    }
+
+    private void SetDialoguePosition(GameObject character)
+    {
+        Debug.Log("set 2 done");
+        // Retrieve the position where the top part of the sprite is in the world
+        float characterSpriteHeight = character.GetComponent<SpriteRenderer>().bounds.size.y;
+        float characterColliderHeight = character.GetComponent<Collider2D>().bounds.size.y;
+        // float characterRendererHeight = character.GetComponent<Renderer>().bounds.size.y;
+        Debug.Log(characterSpriteHeight);
+        
+        // Create position with the sprite top location
+        Vector3 characterPosition = new Vector3(character.transform.position.x,
+                                                characterSpriteHeight,
+                                                character.transform.position.z);
+
+        // Set the DialogueBubble position to the sprite top location in Screen Space
+        dialogueUI.transform.position = cam.WorldToScreenPoint(characterPosition);
     }
 
 }
