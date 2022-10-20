@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5d60245fb0c2efb4fa07a2f7e81b5c9e
+guid: a1cc184473a1a41dd917e4fff9461e2c
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Pangolin
+  - Delicious-Handrawn
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
