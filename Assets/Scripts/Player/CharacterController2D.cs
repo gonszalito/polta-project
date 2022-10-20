@@ -16,8 +16,7 @@ public class CharacterController2D : MonoBehaviour
     public float gravityScale = 20.0f;
 
     // components attached to player
-    private CapsuleCollider2D playerCollider;
-    private BoxCollider2D boxCollider;
+    private BoxCollider2D playerCollider;
     private Rigidbody2D myRigidbody;
     private Animator animator;
 
@@ -27,8 +26,7 @@ public class CharacterController2D : MonoBehaviour
     private void Awake()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
-        playerCollider = GetComponent<CapsuleCollider2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        playerCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
 
         myRigidbody.gravityScale = gravityScale;
@@ -82,7 +80,7 @@ public class CharacterController2D : MonoBehaviour
             Debug.Log("jump");
         }
 
-        if(!boxCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))){ return; }
+        if(!playerCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))){ return; }
         
 
         if (jumpPressed)
