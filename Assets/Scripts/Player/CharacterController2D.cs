@@ -35,9 +35,10 @@ public class CharacterController2D : MonoBehaviour
     {
         if (DialogueManager.GetInstance().dialogueIsPlaying)
         {
+            animator.enabled = false;
             return;
         }
-
+        animator.enabled = true;
         // UpdateIsGrounded();
 
         HandleHorizontalMovement();
