@@ -6,16 +6,21 @@ using Ink.Runtime;
 using UnityEngine.EventSystems;
 
 public class DialogueManager : MonoBehaviour
-{
+{   
 
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
+    //To move the dialogue box
     [SerializeField] private GameObject dialogueUI;
     [SerializeField] private TextMeshProUGUI dialogueText;
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
+
+    [Header("Load Globals JSON")]
+    [SerializeField] private TextAsset loadGlobalsJSON;
+
 
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
@@ -24,6 +29,11 @@ public class DialogueManager : MonoBehaviour
 
     private Camera cam;
 
+    private DialogueVariables dialogueVariables;
+
+    private const string SPEAKER_TAG = "speaker";
+    private const string PORTRAIT_TAG = "portrait";
+    private GameObject talkingCharacter;
 
     private void Awake() 
     {   
@@ -33,6 +43,7 @@ public class DialogueManager : MonoBehaviour
             Debug.LogWarning("Found more than one Dialogue Manager in the scene");
         }
         instance = this;
+        dialogueVariables = new DialogueVariables(loadGlobalsJSON);
     }
 
     public static DialogueManager GetInstance() 
@@ -90,12 +101,18 @@ public class DialogueManager : MonoBehaviour
         
         dialoguePanel.SetActive(true);
 
+        dialogueVariables.StartListening(currentStory);
+        
+
+
         ContinueStory();
     }
 
     private IEnumerator ExitDialogueMode() 
     {
         yield return new WaitForSeconds(0.2f);
+
+        dialogueVariables.StopListening(currentStory);
 
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
@@ -109,7 +126,8 @@ public class DialogueManager : MonoBehaviour
             // set text for the current dialogue line
             dialogueText.text = currentStory.Continue();
                 // display choices, if any, for this dialogue line
-            // DisplayChoices();
+            // DisplayChoices()
+            HandleTags(currentStory.currentTags);
         }
         else 
         {
@@ -176,7 +194,7 @@ public class DialogueManager : MonoBehaviour
         {
         // Retrieve the position where the top part of the sprite is in the world
         float characterSpriteHeight = character.GetComponent<SpriteRenderer>().bounds.size.y;
-        float characterColliderHeight = character.GetComponent<Collider2D>().bounds.size.y;
+        // float characterColliderHeight = character.GetComponent<Collider2D>().bounds.size.y;
         // float characterRendererHeight = character.GetComponent<Renderer>().bounds.size.y;
         
         // Create position with the sprite top location
@@ -187,6 +205,58 @@ public class DialogueManager : MonoBehaviour
         // Set the DialogueBubble position to the sprite top location in Screen Space
         dialogueUI.transform.position = cam.WorldToScreenPoint(characterPosition);
         }
+    }
+
+    private void HandleTags(List<string> currentTags)
+    {
+        // Loop trough all tags
+        foreach ( string tag in currentTags)
+        {
+            string[] splitTag = tag.Split(":");
+            if (splitTag.Length != 2)
+            {
+               Debug.Log("Parsing tag error" + tag);
+            }
+            string tagKey = splitTag[0].Trim();
+            string tagValue = splitTag[1].Trim();
+
+            switch (tagKey)
+            {
+                case SPEAKER_TAG:
+                    this.talkingCharacter = GameObject.Find(tagValue);
+                    break;
+                case PORTRAIT_TAG:
+                    if (this.talkingCharacter != null)
+                    {
+                        SpriteRenderer talkingSprite = talkingCharacter.GetComponent<SpriteRenderer>();
+                        if (tagValue == "Coco_sad") 
+                        {
+                            talkingSprite.material.color = Color.blue;
+                        }
+                        else
+                        {
+                            talkingSprite.material.color = Color.yellow;
+                        }
+                    }
+                    break;
+                default:
+                    Debug.Log(tag);
+                    break;
+
+            }
+        }
+
+    }
+
+    public Ink.Runtime.Object GetVariableState(string variableName)
+    {
+        Ink.Runtime.Object variableValue = null;
+        dialogueVariables.variables.TryGetValue(variableName, out variableValue);
+        if (variableValue == null)
+        {
+            Debug.Log("Ink Variable not found" + name);
+        }
+        return variableValue;
     }
 
 }
