@@ -237,6 +237,7 @@ MonoBehaviour:
   choices:
   - {fileID: 0}
   - {fileID: 0}
+  loadGlobalsJSON: {fileID: 4900000, guid: f98af066732edbb4aa301700f3410fa8, type: 3}
 --- !u!1 &41531435721520448
 GameObject:
   m_ObjectHideFlags: 0

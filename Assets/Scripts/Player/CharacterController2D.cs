@@ -5,7 +5,6 @@
 // which needs to be set up accordingly for directional movement
 // and jumping buttons.
 
-[RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class CharacterController2D : MonoBehaviour
 {
@@ -16,7 +15,7 @@ public class CharacterController2D : MonoBehaviour
     public float gravityScale = 20.0f;
 
     // components attached to player
-    private BoxCollider2D playerCollider;
+    private CapsuleCollider2D playerCollider; 
     private Rigidbody2D myRigidbody;
     private Animator animator;
 
@@ -26,7 +25,7 @@ public class CharacterController2D : MonoBehaviour
     private void Awake()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
-        playerCollider = GetComponent<BoxCollider2D>();
+        playerCollider = GetComponent<CapsuleCollider2D>();
         animator = GetComponent<Animator>();
 
         myRigidbody.gravityScale = gravityScale;

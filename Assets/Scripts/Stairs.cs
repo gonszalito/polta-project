@@ -5,7 +5,7 @@ using UnityEngine;
 public class Stairs : MonoBehaviour
 {
     public SpriteRenderer stair;
-    public BoxCollider2D playerCollision;
+    public CapsuleCollider2D playerCollision;
     public Rigidbody2D rb2d;
 
     private void OnCollisionEnter2D(Collision2D other) 
