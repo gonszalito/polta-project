@@ -86,11 +86,6 @@ public class CharacterController2D : MonoBehaviour
     {
         bool jumpPressed = InputManager.GetInstance().GetJumpPressed();
 
-        if (jumpPressed)
-        {
-            Debug.Log("jump");
-        }
-
         if(!playerCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))){ return; }
         
 
