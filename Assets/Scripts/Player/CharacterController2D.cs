@@ -8,6 +8,7 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class CharacterController2D : MonoBehaviour
 {
+    [SerializeField] Transform Position;
 
     [Header("Movement Params")]
     public float runSpeed = 6.0f;
@@ -19,6 +20,7 @@ public class CharacterController2D : MonoBehaviour
     private Rigidbody2D myRigidbody;
     private Animator animator;
 
+    private bool isMovingTowards = false;
     // other
     // private bool isGrounded = false;
 
@@ -32,12 +34,21 @@ public class CharacterController2D : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
+    { 
+
+       
         if (DialogueManager.GetInstance().dialogueIsPlaying)
         {
-            animator.enabled = false;
+            animator.SetBool("isWalking", false);
+            // animator.Play("idle");
             return;
         }
+        
+        if (isMovingTowards)
+        {
+            return;
+        }
+
         animator.enabled = true;
         // UpdateIsGrounded();
 
@@ -100,4 +111,26 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
+    // Function to move to position when talking
+    // public void MoveToPoint(Transform movePosition)
+    // {
+        
+    //     while (movePosition.position != myRigidbody.transform.position){
+    //         Vector2 moveDirection;
+    //         if (movePosition.position.x > myRigidbody.transform.position.x){
+    //             moveDirection = new Vector2(1.0f,0f);
+    //         }
+    //         else
+    //         {
+    //             moveDirection = new Vector2(-1.0f,0f);
+    //         }
+    //         myRigidbody.transform.position = Vector2.Lerp(myRigidbody.transform.position, movePosition.position, 1.5f);
+    //         isMovingTowards = true;
+    //     }
+       
+    //     isMovingTowards = false;
+        
+    // }
+
+   
 }
