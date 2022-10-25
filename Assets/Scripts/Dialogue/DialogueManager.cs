@@ -315,7 +315,7 @@ public class DialogueManager : MonoBehaviour
 
             }
         }
-
+        
     }
 
     public Ink.Runtime.Object GetVariableState(string variableName)
