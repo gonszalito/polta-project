@@ -83,7 +83,7 @@ public class CharacterController2D : MonoBehaviour
 
         if (playerHasHorizontalSpeed)
         {
-            SoundManager.PlaySound("Walking");
+            // SoundManager.PlaySound("Walking");
         }
     }
 

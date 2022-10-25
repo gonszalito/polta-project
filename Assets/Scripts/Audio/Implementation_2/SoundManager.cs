@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
 
 public static class SoundManager 
 {
@@ -139,6 +141,26 @@ public static class SoundManager
             }
         }  
         return null;
+    }
+    
+    public static void PlaySound(string soundName, Vector3 position)
+    {
+        if (CanPlaySound(soundName))
+        {
+            GameObject soundGameObject = new GameObject("Sound");
+            soundGameObject.transform.position = position;
+            AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+            audioSource.clip = GetAudioClip(soundName);
+            audioSource.Play();
+        }
+    }
+
+    public static void SetButtonSound(string soundName,Button button)
+    {
+        Button btn = button.GetComponent<Button>();
+        UnityAction buttonAction = null;
+        buttonAction += () => SoundManager.PlaySound(soundName);
+        btn.onClick.AddListener(buttonAction);  
     }
 
 }

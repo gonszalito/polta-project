@@ -55,3 +55,8 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 0819a7eface9d8e4c8c0895e4605abd9, type: 3}
     timeDelay: 1
     lastTimePlayed: 0
+  - sound: 0
+    soundName: MenuButton_hover
+    audioClip: {fileID: 8300000, guid: 18cd59ee81d829b46ba712a03b6a64bc, type: 3}
+    timeDelay: 1
+    lastTimePlayed: 0
