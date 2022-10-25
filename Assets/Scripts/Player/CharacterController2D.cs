@@ -80,6 +80,11 @@ public class CharacterController2D : MonoBehaviour
 
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
         animator.SetBool("isWalking", playerHasHorizontalSpeed);
+
+        if (playerHasHorizontalSpeed)
+        {
+            SoundManager.PlaySound("Walking");
+        }
     }
 
     private void HandleJumping()
