@@ -56,7 +56,7 @@ public class CharacterController2D : MonoBehaviour
 
         HandleJumping();
 
-        FlipSprite();
+        // FlipSprite();
     }
 
     // private void UpdateIsGrounded()
@@ -79,7 +79,19 @@ public class CharacterController2D : MonoBehaviour
         myRigidbody.velocity = new Vector2(moveDirection.x * runSpeed, myRigidbody.velocity.y);
 
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
-        animator.SetBool("isWalking", playerHasHorizontalSpeed);
+        // animator.SetBool("isWalking", playerHasHorizontalSpeed);
+
+        if (myRigidbody.velocity.x > 0)
+        {
+            animator.SetBool("isWalking", playerHasHorizontalSpeed);
+        } else if(myRigidbody.velocity.x < 0)
+        {
+            animator.SetBool("isWalkingLeft", playerHasHorizontalSpeed);
+        } else if(myRigidbody.velocity.x == 0)
+        {
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isWalkingLeft", false);
+        }
 
         if (playerHasHorizontalSpeed)
         {
