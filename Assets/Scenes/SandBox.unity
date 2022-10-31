@@ -8452,6 +8452,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 41531435574994344, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: maxPitch
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 41531435574994344, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: minPitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 41531435574994344, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
       propertyPath: dialogueUI
       value: 
       objectReference: {fileID: 739895569}
@@ -8468,6 +8476,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 739895563}
     - target: {fileID: 41531435574994344, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: frequencyLevel
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 41531435574994344, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
       propertyPath: displayNameText
       value: 
       objectReference: {fileID: 739895568}
@@ -8475,6 +8487,14 @@ PrefabInstance:
       propertyPath: loadGlobalsJSON
       value: 
       objectReference: {fileID: 4900000, guid: f98af066732edbb4aa301700f3410fa8, type: 3}
+    - target: {fileID: 41531435574994344, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: makePredictable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 41531435574994344, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: stopAudioSource
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 41531435574994344, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
       propertyPath: portraitAnimator
       value: 
@@ -8487,6 +8507,22 @@ PrefabInstance:
       propertyPath: choices.Array.data[1]
       value: 
       objectReference: {fileID: 739895564}
+    - target: {fileID: 41531435574994344, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: dialogueTypingSoundClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d9553421bae3f994bba50de72f44dd7b, type: 3}
+    - target: {fileID: 41531435574994344, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: dialogueTypingSoundClips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 41531435574994344, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: dialogueTypingSoundClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: d9553421bae3f994bba50de72f44dd7b, type: 3}
+    - target: {fileID: 41531435574994344, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: dialogueTypingSoundClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 18cd59ee81d829b46ba712a03b6a64bc, type: 3}
     - target: {fileID: 41531435721520448, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
       propertyPath: m_Name
       value: Managers

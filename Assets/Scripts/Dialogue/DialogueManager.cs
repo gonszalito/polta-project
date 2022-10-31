@@ -28,6 +28,19 @@ public class DialogueManager : MonoBehaviour
     [Header("Load Globals JSON")]
     [SerializeField] private TextAsset loadGlobalsJSON;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] dialogueTypingSoundClips;
+    [Range(1,5)]
+    [SerializeField] private int frequencyLevel = 2;
+    [Range(-3,3)]
+    [SerializeField] private float minPitch = 0.5f;
+    [Range(-3,3)]
+    [SerializeField] private float maxPitch = 3f;
+    [SerializeField] private bool stopAudioSource;
+    [SerializeField] private bool makePredictable;
+
+    private AudioSource audioSource;
+
     private bool canContinueToNextLine = false;
 
     private Coroutine displayLineCoroutine;
@@ -55,6 +68,8 @@ public class DialogueManager : MonoBehaviour
         }
         instance = this;
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
+
+        audioSource = this.gameObject.AddComponent<AudioSource>();
     }
 
     public static DialogueManager GetInstance() 
@@ -159,10 +174,53 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private void PlayDialogueSound(int currentDisplayedCharacterCount,char currentCharacter)
+    {
+        if (currentDisplayedCharacterCount % frequencyLevel == 0 )
+        {
+            if (stopAudioSource)
+            {
+                audioSource.Stop();
+            }
+            AudioClip soundClip = null;
+
+            if (makePredictable)
+            {
+                int hashCode = currentCharacter.GetHashCode();
+                int predictableIndex = hashCode % dialogueTypingSoundClips.Length;
+                soundClip = dialogueTypingSoundClips[predictableIndex];
+                // pitch
+                int minPitchInt = (int) (minPitch * 100);
+                int maxPitchInt = (int) (maxPitch * 100);
+                int pitchRangeInt = maxPitchInt - minPitchInt;
+
+                if (pitchRangeInt != 0)
+                {
+                    int predictablePitchInt = (hashCode % pitchRangeInt) + minPitchInt; 
+                    float predictablePitch = predictablePitchInt / 100f;
+                    audioSource.pitch = predictablePitch;
+                }
+                else
+                {
+                    audioSource.pitch = minPitch;
+                }
+            }
+            else
+            {
+                // int randomIndex = Random.Range(0,dialogueTypingSoundClips.Length);
+                // soundClip = dialogueTypingSoundClips[randomIndex];
+                // audioSource.pitch = Random.Range(minPitch,maxPitch);
+                // audioSource.PlayOneShot(soundClip);  
+            }
+            audioSource.PlayOneShot(dialogueTypingSoundClips[0]);
+        }
+    }
+
     private IEnumerator DisplayLine(string line)
     {
         // empty the dialogue text
-        dialogueText.text = "";
+        dialogueText.text = line;
+        dialogueText.maxVisibleCharacters = 0;
         continueIcon.SetActive(false);
         HideChoices();
 
@@ -176,7 +234,7 @@ public class DialogueManager : MonoBehaviour
             // if the submit button has been pressed, skip to end
             if (InputManager.GetInstance().GetInteractPressed())
             {
-                dialogueText.text = line;
+                dialogueText.maxVisibleCharacters = line.Length;
                 break;
             }
 
@@ -184,7 +242,7 @@ public class DialogueManager : MonoBehaviour
             if (letter == '<' || isAddingRichTextTag)
             {
                 isAddingRichTextTag = true;
-                dialogueText.text += letter;
+                // dialogueText.text += letter;
                 if (letter == '>')
                 {
                     isAddingRichTextTag = false;
@@ -192,7 +250,9 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                dialogueText.text += letter;
+                // dialogueText.text += letter; 
+                PlayDialogueSound(dialogueText.maxVisibleCharacters, dialogueText.text[dialogueText.maxVisibleCharacters]);
+                dialogueText.maxVisibleCharacters++;
                 yield return new WaitForSeconds(typingSpeed);
             }
         }
