@@ -60,3 +60,8 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 18cd59ee81d829b46ba712a03b6a64bc, type: 3}
     timeDelay: 1
     lastTimePlayed: 0
+  - sound: 0
+    soundName: Typing
+    audioClip: {fileID: 8300000, guid: 18cd59ee81d829b46ba712a03b6a64bc, type: 3}
+    timeDelay: 1
+    lastTimePlayed: 0
