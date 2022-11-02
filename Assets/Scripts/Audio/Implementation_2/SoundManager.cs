@@ -19,7 +19,7 @@ public static class SoundManager
     {
         soundTimerDictionary = new Dictionary<string, float>();
         soundTimerDictionary["MenuButton"] = 0.5f;
-        soundTimerDictionary["Walking"] = 1f;
+        soundTimerDictionary["Walking"] = 0.5f;
     }
 
     private static bool CanPlaySound(string soundName)
@@ -80,6 +80,7 @@ public static class SoundManager
     {
         GameObject soundGameObject = new GameObject("Sound");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+        audioSource.volume = GetVolume(sound);
         audioSource.PlayOneShot(GetAudioClip(sound));
     }
 
@@ -90,6 +91,7 @@ public static class SoundManager
             Debug.Log(soundName + "this");
             GameObject soundGameObject = new GameObject("Sound");
             AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+            audioSource.volume = GetVolume(soundName);
             audioSource.PlayOneShot(GetAudioClip(soundName));
              Debug.Log(audioSource + "this");
         }
@@ -129,8 +131,6 @@ public static class SoundManager
     }
     #endregion
 
-
-     
     private static SoundAssets.SoundAudioClip GetSoundAudioClip(string soundName)
     {
         foreach(SoundAssets.SoundAudioClip soundAudioClips in SoundAssets.soundAssets.soundAudioClipArray)
@@ -161,6 +161,36 @@ public static class SoundManager
         UnityAction buttonAction = null;
         buttonAction += () => SoundManager.PlaySound(soundName);
         btn.onClick.AddListener(buttonAction);  
+    }
+
+    private static float GetVolume(Sound sound)
+    {
+        foreach(SoundAssets.SoundAudioClip soundAudioClips in SoundAssets.soundAssets.soundAudioClipArray)
+        {
+            if (soundAudioClips.sound == sound)
+            {
+                return soundAudioClips.volume;
+            }
+        } 
+
+        Debug.LogError("String" + sound + "not found");
+        return 0.3f;
+
+    }
+
+    private static float GetVolume(string soundName)
+    {
+        foreach(SoundAssets.SoundAudioClip soundAudioClips in SoundAssets.soundAssets.soundAudioClipArray)
+        {
+            if (soundAudioClips.soundName == soundName)
+            {
+                return soundAudioClips.volume;
+            }
+        } 
+
+        Debug.LogError("String" + soundName + "not found");
+        return 0.3f;
+
     }
 
 }

@@ -19,8 +19,6 @@ public class MainMenu : MonoBehaviour
 
         // Audio Implementation 2
         menuButton = GetComponent<Button>();
-        SoundManager.PlaySound("MenuButton");
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
         Time.timeScale = 1f;
     }
@@ -29,5 +27,10 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("QUIT!");
         Application.Quit();
+    }
+
+    public void PlaySound()
+    {
+        SoundManager.PlaySound("MenuButton");
     }
 }
