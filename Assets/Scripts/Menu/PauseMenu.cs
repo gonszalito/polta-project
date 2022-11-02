@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     public static bool journalIsOpen = false;
     public GameObject pauseMenuUI;
     public GameObject journalMenuUI;
+    [SerializeField] AudioSource audioSource;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -24,6 +25,7 @@ public class PauseMenu : MonoBehaviour
             } else
             {
                 Pause();
+                audioSource.Play();
             }
         }
     }
