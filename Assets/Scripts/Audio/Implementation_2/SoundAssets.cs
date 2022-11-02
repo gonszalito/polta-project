@@ -24,10 +24,13 @@ public class SoundAssets : MonoBehaviour
         public string soundName;
         public AudioClip audioClip;
         public float timeDelay;
+        public float volume = 0.1f;
+
         [HideInInspector] public float lastTimePlayed;
         
         public bool CanPlay()
         {
+
             if(audioClip.length + timeDelay < Time.time)
             {
                 return true;
@@ -36,6 +39,11 @@ public class SoundAssets : MonoBehaviour
             {
                 return false;
             }
+        }
+
+        public float GetTimeDelay()
+        {
+            return this.audioClip.length;
         }
     }
 

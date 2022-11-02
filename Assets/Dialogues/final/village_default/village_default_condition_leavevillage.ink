@@ -1,0 +1,1 @@
+(I still have things to do here.)#speaker:ragi #portrait:ragi #layout:character

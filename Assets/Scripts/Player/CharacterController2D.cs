@@ -23,6 +23,7 @@ public class CharacterController2D : MonoBehaviour
     private bool isMovingTowards = false;
     // other
     // private bool isGrounded = false;
+    private bool isGrounded;
 
     private void Awake()
     {
@@ -93,11 +94,16 @@ public class CharacterController2D : MonoBehaviour
             animator.SetBool("isWalkingLeft", false);
         }
 
-        if (playerHasHorizontalSpeed)
+        if (playerHasHorizontalSpeed )
         {
-            // SoundManager.PlaySound("Walking");
+            if(playerCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+            {
+                SoundManager.PlaySound("Walking");
+            }
         }
     }
+
+
 
     private void HandleJumping()
     {
