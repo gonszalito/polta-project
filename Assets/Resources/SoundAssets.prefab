@@ -49,7 +49,7 @@ MonoBehaviour:
     soundName: MenuButton
     audioClip: {fileID: 8300000, guid: d9553421bae3f994bba50de72f44dd7b, type: 3}
     timeDelay: 0
-    volume: 0.05
+    volume: 0.15
     lastTimePlayed: 0
   - sound: 1
     soundName: Walking

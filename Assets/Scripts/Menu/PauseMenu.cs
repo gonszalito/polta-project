@@ -133,4 +133,14 @@ public class PauseMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void PlaySelectSound()
+    {
+        SoundManager.PlaySound("MenuButton");
+    }
+
+    public void PlayHoverSound()
+    {
+        SoundManager.PlaySound("MenuButton_hover");
+    }
 }
