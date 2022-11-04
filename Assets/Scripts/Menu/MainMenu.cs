@@ -17,10 +17,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        // clear selected button
-        EventSystem.current.SetSelectedGameObject(null);
-        // set a new selected button
-        EventSystem.current.SetSelectedGameObject(mainFirstButton);
+        SelectedButton(mainFirstButton);
     }
     public void PlayGame()
     {
@@ -36,61 +33,43 @@ public class MainMenu : MonoBehaviour
     {
         mainMenuUI.SetActive(false);
         settingsMenuUI.SetActive(true);
-         // clear selected button
-        EventSystem.current.SetSelectedGameObject(null);
-        // set a new selected button
-        EventSystem.current.SetSelectedGameObject(settingsFirstButton);
+        SelectedButton(settingsFirstButton);
     }
 
     public void BackSettings()
     {
         mainMenuUI.SetActive(true);
         settingsMenuUI.SetActive(false);
-         // clear selected button
-        EventSystem.current.SetSelectedGameObject(null);
-        // set a new selected button
-        EventSystem.current.SetSelectedGameObject(mainFirstButton);
+        SelectedButton(mainFirstButton);
+
     }
 
     public void OpenGallery()
     {
         mainMenuUI.SetActive(false);
         galleryMenuUI.SetActive(true);
-         // clear selected button
-        EventSystem.current.SetSelectedGameObject(null);
-        // set a new selected button
-        EventSystem.current.SetSelectedGameObject(galleryFirstButton);
+        SelectedButton(galleryFirstButton);
     }
 
     public void BackGallery()
     {
         mainMenuUI.SetActive(true);
         galleryMenuUI.SetActive(false);
-         // clear selected button
-        EventSystem.current.SetSelectedGameObject(null);
-        // set a new selected button
-        EventSystem.current.SetSelectedGameObject(mainFirstButton);
-
+        SelectedButton(mainFirstButton);
     }
 
     public void OpenAbout()
     {
         mainMenuUI.SetActive(false);
         aboutMenuUI.SetActive(true);
-         // clear selected button
-        EventSystem.current.SetSelectedGameObject(null);
-        // set a new selected button
-        EventSystem.current.SetSelectedGameObject(aboutFirstButton);
+        SelectedButton(aboutFirstButton);
     }
 
     public void BackAbout()
     {
         mainMenuUI.SetActive(true);
         aboutMenuUI.SetActive(false);
-         // clear selected button
-        EventSystem.current.SetSelectedGameObject(null);
-        // set a new selected button
-        EventSystem.current.SetSelectedGameObject(mainFirstButton);
+        SelectedButton(mainFirstButton);
     }
 
     public void QuitGame()
@@ -112,5 +91,13 @@ public class MainMenu : MonoBehaviour
     void GetScene()
     {
        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+    }
+
+    private void SelectedButton(GameObject firstSelected)
+    {
+        // clear selected button
+        EventSystem.current.SetSelectedGameObject(null);
+        // set a new selected button
+        EventSystem.current.SetSelectedGameObject(firstSelected);
     }
 }

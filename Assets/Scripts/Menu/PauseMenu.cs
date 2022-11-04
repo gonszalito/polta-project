@@ -43,10 +43,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         journalMenuUI.SetActive(true);
         journalIsOpen = true;
-        // clear selected button
-        EventSystem.current.SetSelectedGameObject(null);
-        // set a new selected button
-        EventSystem.current.SetSelectedGameObject(journalFirstButton);
+        SelectedButton(journalFirstButton);
     }
 
     public void OpenSettings()
@@ -54,11 +51,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         settingsMenuUI.SetActive(true);
         settingsIsOpen = true;
-        // clear selected button
-        EventSystem.current.SetSelectedGameObject(null);
-        // set a new selected button
-        EventSystem.current.SetSelectedGameObject(settingsFirstButton);
-        Debug.Log("OPEN SETTINGS");
+        SelectedButton(settingsFirstButton);
     }
 
     public void BackJournal()
@@ -66,10 +59,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         journalMenuUI.SetActive(false);
         journalIsOpen = false;
-        // clear selected button
-        EventSystem.current.SetSelectedGameObject(null);
-        // set a new selected button
-        EventSystem.current.SetSelectedGameObject(pauseFirstButton);
+        SelectedButton(pauseFirstButton);
     }
 
     public void BackSettings()
@@ -77,10 +67,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         settingsMenuUI.SetActive(false);
         settingsIsOpen = false;
-        // clear selected button
-        EventSystem.current.SetSelectedGameObject(null);
-        // set a new selected button
-        EventSystem.current.SetSelectedGameObject(pauseFirstButton);
+        SelectedButton(pauseFirstButton);
     }
 
     void ResumeThroughJournal()
@@ -106,10 +93,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = true;
-        // clear selected button
-        EventSystem.current.SetSelectedGameObject(null);
-        // set a new selected button
-        EventSystem.current.SetSelectedGameObject(pauseFirstButton);
+        SelectedButton(pauseFirstButton);
     }
 
     public void Resume()
@@ -142,5 +126,13 @@ public class PauseMenu : MonoBehaviour
     public void PlayHoverSound()
     {
         SoundManager.PlaySound("MenuButton_hover");
+    }
+
+    private void SelectedButton(GameObject firstSelected)
+    {
+        // clear selected button
+        EventSystem.current.SetSelectedGameObject(null);
+        // set a new selected button
+        EventSystem.current.SetSelectedGameObject(firstSelected);
     }
 }
