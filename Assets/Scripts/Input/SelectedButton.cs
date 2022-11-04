@@ -1,19 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-
-
-public class MainMenu : MonoBehaviour
+public class SelectedButton : MonoBehaviour
 {
     public GameObject mainMenuUI, settingsMenuUI, galleryMenuUI, aboutMenuUI;
     public GameObject mainFirstButton, settingsFirstButton, galleryFirstButton, aboutFirstButton;
-    public AudioSource test;
-    private Button menuButton;
-
+    Button primaryButton;
+    // Start is called before the first frame update
     void Start()
     {
         // clear selected button
@@ -21,17 +17,8 @@ public class MainMenu : MonoBehaviour
         // set a new selected button
         EventSystem.current.SetSelectedGameObject(mainFirstButton);
     }
-    public void PlayGame()
-    {
-        // Audio Implementation 1
-        // FindObjectOfType<AudioManager>().Play("MenuButton");
 
-        // Audio Implementation 2
-        menuButton = GetComponent<Button>();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
-    }
-
-     public void OpenSettings()
+    public void OpenSettings()
     {
         mainMenuUI.SetActive(false);
         settingsMenuUI.SetActive(true);
@@ -90,16 +77,5 @@ public class MainMenu : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         // set a new selected button
         EventSystem.current.SetSelectedGameObject(mainFirstButton);
-    }
-
-    public void QuitGame()
-    {
-        Debug.Log("QUIT!");
-        Application.Quit();
-    }
-
-    public void PlaySound()
-    {
-        SoundManager.PlaySound("MenuButton");
     }
 }
