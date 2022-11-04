@@ -7,6 +7,10 @@
  public class UIButtonSoundEvent : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler {    
  
     [SerializeField] string soundName;
+
+    private void OnSelectionChange() {
+        SoundManager.PlaySound(soundName);
+    }
     
     public void OnPointerEnter( PointerEventData ped ) {
         SoundManager.PlaySound(soundName);

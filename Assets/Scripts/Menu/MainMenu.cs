@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour
     public GameObject mainFirstButton, settingsFirstButton, galleryFirstButton, aboutFirstButton;
     public AudioSource test;
     private Button menuButton;
+    [SerializeField] string hoverSound;
 
     void Start()
     {
@@ -28,7 +29,7 @@ public class MainMenu : MonoBehaviour
 
         // Audio Implementation 2
         menuButton = GetComponent<Button>();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+        Invoke("GetScene", 0.5f);
     }
 
      public void OpenSettings()
@@ -101,5 +102,15 @@ public class MainMenu : MonoBehaviour
     public void PlaySound()
     {
         SoundManager.PlaySound("MenuButton");
+    }
+
+    public void PlayHoverSound()
+    {
+        SoundManager.PlaySound(hoverSound);
+    }
+
+    void GetScene()
+    {
+       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
     }
 }
