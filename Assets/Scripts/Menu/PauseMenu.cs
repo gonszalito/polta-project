@@ -3,26 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool gameIsPaused = false;
     public static bool journalIsOpen = false;
+    public static bool settingsIsOpen = false;
     public GameObject pauseMenuUI;
     public GameObject journalMenuUI;
+    public GameObject settingsMenuUI;
+    public GameObject pauseFirstButton, journalFirstButton, settingsFirstButton;
     [SerializeField] AudioSource audioSource;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (gameIsPaused && journalIsOpen == false)
+            if (gameIsPaused && !journalIsOpen && !settingsIsOpen)
             {
                 Resume();
             } 
-            else if (gameIsPaused && journalIsOpen)
+            else if (gameIsPaused && journalIsOpen && !settingsIsOpen)
             {
                 ResumeThroughJournal();
-            } else
+            }
+            else if (gameIsPaused && settingsIsOpen && !journalIsOpen)
+            {
+                ResumeThroughSettings();
+            } 
+            else
             {
                 Pause();
                 audioSource.Play();
@@ -34,6 +43,15 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         journalMenuUI.SetActive(true);
         journalIsOpen = true;
+        SelectedButton(journalFirstButton);
+    }
+
+    public void OpenSettings()
+    {
+        pauseMenuUI.SetActive(false);
+        settingsMenuUI.SetActive(true);
+        settingsIsOpen = true;
+        SelectedButton(settingsFirstButton);
     }
 
     public void BackJournal()
@@ -41,13 +59,33 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         journalMenuUI.SetActive(false);
         journalIsOpen = false;
+        SelectedButton(pauseFirstButton);
     }
-    public void ResumeThroughJournal()
+
+    public void BackSettings()
+    {
+        pauseMenuUI.SetActive(true);
+        settingsMenuUI.SetActive(false);
+        settingsIsOpen = false;
+        SelectedButton(pauseFirstButton);
+    }
+
+    void ResumeThroughJournal()
     {
         journalMenuUI.SetActive(false);
         Time.timeScale = 1f;
         journalIsOpen = false;
         gameIsPaused = false;
+        Debug.Log("THROUGH JOURNAL");
+    }
+
+    void ResumeThroughSettings()
+    {
+        settingsMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        settingsIsOpen = false;
+        gameIsPaused = false;
+        Debug.Log("THROUGH SETTINGS");
     }
 
     void Pause()
@@ -55,6 +93,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = true;
+        SelectedButton(pauseFirstButton);
     }
 
     public void Resume()
@@ -62,12 +101,14 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
+        Debug.Log("RESUME");
     }
 
     public void LoadMenu()
     {
         Debug.Log("MAIN MENU");
         gameIsPaused = false;
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
 
     }
@@ -75,5 +116,23 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void PlaySelectSound()
+    {
+        SoundManager.PlaySound("MenuButton");
+    }
+
+    public void PlayHoverSound()
+    {
+        SoundManager.PlaySound("MenuButton_hover");
+    }
+
+    private void SelectedButton(GameObject firstSelected)
+    {
+        // clear selected button
+        EventSystem.current.SetSelectedGameObject(null);
+        // set a new selected button
+        EventSystem.current.SetSelectedGameObject(firstSelected);
     }
 }

@@ -1,17 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.Events;
+
 
 
 public class MainMenu : MonoBehaviour
 {
-
+    public GameObject mainMenuUI, settingsMenuUI, galleryMenuUI, aboutMenuUI;
+    public GameObject mainFirstButton, settingsFirstButton, galleryFirstButton, aboutFirstButton;
     public AudioSource test;
     private Button menuButton;
+    [SerializeField] string hoverSound;
 
+    void Start()
+    {
+        SelectedButton(mainFirstButton);
+    }
     public void PlayGame()
     {
         // Audio Implementation 1
@@ -19,8 +26,50 @@ public class MainMenu : MonoBehaviour
 
         // Audio Implementation 2
         menuButton = GetComponent<Button>();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
-        Time.timeScale = 1f;
+        Invoke("GetScene", 0.5f);
+    }
+
+     public void OpenSettings()
+    {
+        mainMenuUI.SetActive(false);
+        settingsMenuUI.SetActive(true);
+        SelectedButton(settingsFirstButton);
+    }
+
+    public void BackSettings()
+    {
+        mainMenuUI.SetActive(true);
+        settingsMenuUI.SetActive(false);
+        SelectedButton(mainFirstButton);
+
+    }
+
+    public void OpenGallery()
+    {
+        mainMenuUI.SetActive(false);
+        galleryMenuUI.SetActive(true);
+        SelectedButton(galleryFirstButton);
+    }
+
+    public void BackGallery()
+    {
+        mainMenuUI.SetActive(true);
+        galleryMenuUI.SetActive(false);
+        SelectedButton(mainFirstButton);
+    }
+
+    public void OpenAbout()
+    {
+        mainMenuUI.SetActive(false);
+        aboutMenuUI.SetActive(true);
+        SelectedButton(aboutFirstButton);
+    }
+
+    public void BackAbout()
+    {
+        mainMenuUI.SetActive(true);
+        aboutMenuUI.SetActive(false);
+        SelectedButton(mainFirstButton);
     }
 
     public void QuitGame()
@@ -32,5 +81,23 @@ public class MainMenu : MonoBehaviour
     public void PlaySound()
     {
         SoundManager.PlaySound("MenuButton");
+    }
+
+    public void PlayHoverSound()
+    {
+        SoundManager.PlaySound(hoverSound);
+    }
+
+    void GetScene()
+    {
+       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+    }
+
+    private void SelectedButton(GameObject firstSelected)
+    {
+        // clear selected button
+        EventSystem.current.SetSelectedGameObject(null);
+        // set a new selected button
+        EventSystem.current.SetSelectedGameObject(firstSelected);
     }
 }
