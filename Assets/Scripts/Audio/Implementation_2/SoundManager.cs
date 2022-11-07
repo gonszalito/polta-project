@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,7 @@ public static class SoundManager
     {
         soundTimerDictionary = new Dictionary<string, float>();
         soundTimerDictionary["MenuButton"] = 0.5f;
-        soundTimerDictionary["Walking"] = 0.5f;
+        soundTimerDictionary["Walking"] = 0f;
     }
 
     private static bool CanPlaySound(string soundName)
@@ -54,7 +55,7 @@ public static class SoundManager
                 if (soundTimerDictionary.ContainsKey(soundName))
                 {
                     float lastTimePlayed = soundTimerDictionary[soundName];
-                    float playerMoveTimerMax = 1f;
+                    float playerMoveTimerMax = 0.4f;
                     if (lastTimePlayed + playerMoveTimerMax < Time.time)
                     {
                         soundTimerDictionary[soundName] = Time.time;
@@ -91,12 +92,42 @@ public static class SoundManager
             Debug.Log(soundName + "this");
             GameObject soundGameObject = new GameObject("Sound");
             AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+            SoundAssets.SoundAudioClip soundAudioClip = GetSoundAudioClip(soundName);
             audioSource.volume = GetVolume(soundName);
+            Debug.Log(soundName + audioSource.volume);
             audioSource.PlayOneShot(GetAudioClip(soundName));
-             Debug.Log(audioSource + "this");
+            Debug.Log(audioSource + "this");
+
+            corout newInstance = new corout();
+            newInstance.DestroySound(GetAudioClip(soundName),soundAudioClip);
+
+            if (soundAudioClip.isDestroy)
+            {
+                UnityEngine.Object.Destroy(soundGameObject);
+            }
+
         }
+
+
     }
     #endregion 
+
+    // private static IEnumerator DestroySound(AudioClip clip, GameObject soundSource)
+    // {
+    //     yield return new WaitForSeconds(clip.length);
+    //     Destroy(soundSource);
+    // }
+
+    class corout 
+    { 
+        public IEnumerator DestroySound(AudioClip clip, SoundAssets.SoundAudioClip soundName)
+        {
+            yield return new WaitForSeconds(clip.length+1f);
+            soundName.DestroyTrue();
+        }   
+    }
+ 
+    
     
     #region GetAudioClip Variants
     // Try different methods to fetch the sound
@@ -177,6 +208,21 @@ public static class SoundManager
         return 0.3f;
 
     }
+
+    //    private static SoundAudioClip GetSoundAudioClip(string soundName)
+    // {
+    //     foreach(SoundAssets.SoundAudioClip soundAudioClips in SoundAssets.soundAssets.soundAudioClipArray)
+    //     {
+    //         if (soundAudioClips.soundName == soundName)
+    //         {
+    //             return soundAudioClips;
+    //         }
+    //     } 
+
+    //     Debug.LogError("String" + sound + "not found");
+    //     return 0.3f;
+
+    // }
 
     private static float GetVolume(string soundName)
     {

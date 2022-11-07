@@ -23,11 +23,19 @@ public class SoundAssets : MonoBehaviour
         public SoundManager.Sound sound;
         public string soundName;
         public AudioClip audioClip;
-        public float timeDelay;
+        public float timeDelay= 0f;
+        public bool isLoop = false;
         public float volume = 0.1f;
+        public bool isDestroy = false;
+
 
         [HideInInspector] public float lastTimePlayed;
         
+        public void DestroyTrue()
+        {
+            isDestroy = true;
+        }
+
         public bool CanPlay()
         {
 
