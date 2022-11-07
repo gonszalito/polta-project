@@ -761,7 +761,7 @@ RectTransform:
   - {fileID: 1681058911}
   - {fileID: 897008855}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2625,7 +2625,7 @@ Transform:
   m_Children:
   - {fileID: 262631563}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &480032470
 GameObject:
@@ -3163,8 +3163,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 623251023}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &532723957
 MonoBehaviour:
@@ -3370,6 +3370,7 @@ GameObject:
   - component: {fileID: 574120222}
   - component: {fileID: 574120221}
   - component: {fileID: 574120224}
+  - component: {fileID: 574120225}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -3533,6 +3534,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &574120225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574120219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e6e4e5cc746cb41b58d92c916d815c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: MenuButton_hover
 --- !u!1 &623894366
 GameObject:
   m_ObjectHideFlags: 0
@@ -4623,6 +4637,7 @@ GameObject:
   - component: {fileID: 724676456}
   - component: {fileID: 724676455}
   - component: {fileID: 724676458}
+  - component: {fileID: 724676459}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -4786,8 +4801,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!1001 &739895562
-PrefabInstance:
+--- !u!114 &724676459
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6122,7 +6137,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &933913725
 GameObject:
@@ -6528,7 +6543,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8584321384943053573, guid: 44c2f5a8150abdc4594d94d7c9d695b5, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8584321384943053573, guid: 44c2f5a8150abdc4594d94d7c9d695b5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7173,7 +7188,7 @@ Transform:
   - {fileID: 1958348432}
   - {fileID: 437607710}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1152746585 stripped
 CapsuleCollider2D:
@@ -8237,7 +8252,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1293461790 stripped
 GameObject:
@@ -8476,6 +8491,7 @@ GameObject:
   - component: {fileID: 1345439148}
   - component: {fileID: 1345439147}
   - component: {fileID: 1345439150}
+  - component: {fileID: 1345439151}
   m_Layer: 5
   m_Name: Settings Button
   m_TagString: Untagged
@@ -8639,6 +8655,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1345439151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345439145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e6e4e5cc746cb41b58d92c916d815c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: MenuButton_hover
 --- !u!1 &1353306662
 GameObject:
   m_ObjectHideFlags: 0
@@ -9555,6 +9584,7 @@ GameObject:
   - component: {fileID: 1476081014}
   - component: {fileID: 1476081013}
   - component: {fileID: 1476081016}
+  - component: {fileID: 1476081017}
   m_Layer: 5
   m_Name: Journal Button
   m_TagString: Untagged
@@ -9718,6 +9748,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1476081017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476081011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e6e4e5cc746cb41b58d92c916d815c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: MenuButton_hover
 --- !u!1 &1476253362
 GameObject:
   m_ObjectHideFlags: 0
@@ -10067,6 +10110,7 @@ GameObject:
   - component: {fileID: 1533533235}
   - component: {fileID: 1533533234}
   - component: {fileID: 1533533237}
+  - component: {fileID: 1533533238}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -10230,6 +10274,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1533533238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533533232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e6e4e5cc746cb41b58d92c916d815c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: MenuButton_hover
 --- !u!1001 &1557793532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10745,7 +10802,7 @@ Transform:
   - {fileID: 53193733}
   - {fileID: 153541452}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1655529785
 GameObject:
@@ -11969,7 +12026,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1026585761}
-  - {fileID: 623228798}
   m_Father: {fileID: 2099240349}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12701,7 +12757,7 @@ RectTransform:
   m_Children:
   - {fileID: 826811387}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12867,6 +12923,7 @@ GameObject:
   - component: {fileID: 2091437965}
   - component: {fileID: 2091437964}
   - component: {fileID: 2091437967}
+  - component: {fileID: 2091437968}
   m_Layer: 5
   m_Name: Resume Button
   m_TagString: Untagged
@@ -13030,6 +13087,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &2091437968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091437962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e6e4e5cc746cb41b58d92c916d815c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: MenuButton_hover
 --- !u!1 &2099240348
 GameObject:
   m_ObjectHideFlags: 0
@@ -13069,7 +13139,7 @@ Transform:
   - {fileID: 251635118}
   - {fileID: 803580853}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2121459636
 PrefabInstance:
@@ -13154,6 +13224,7 @@ GameObject:
   - component: {fileID: 2122529453}
   - component: {fileID: 2122529452}
   - component: {fileID: 2122529455}
+  - component: {fileID: 2122529456}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -13317,6 +13388,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &2122529456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122529450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e6e4e5cc746cb41b58d92c916d815c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: MenuButton_hover
 --- !u!1 &2143172423
 GameObject:
   m_ObjectHideFlags: 0
@@ -13905,7 +13989,7 @@ RectTransform:
   m_Children:
   - {fileID: 5439510634263190127}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -14950,7 +15034,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4643107229795246391, guid: a7692cdb4fad82e4289b55833a26e44c, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4643107229795246391, guid: a7692cdb4fad82e4289b55833a26e44c, type: 3}
       propertyPath: m_LocalPosition.x
