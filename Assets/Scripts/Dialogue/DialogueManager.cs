@@ -22,6 +22,7 @@ public class DialogueManager : MonoBehaviour
     private Animator layoutAnimator;
 
     [Header("Choices UI")]
+    [SerializeField] private TextMeshProUGUI questionText;
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
 

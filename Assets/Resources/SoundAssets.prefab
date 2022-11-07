@@ -49,35 +49,39 @@ MonoBehaviour:
     soundName: MenuButton
     audioClip: {fileID: 8300000, guid: d9553421bae3f994bba50de72f44dd7b, type: 3}
     timeDelay: 0
-    volume: 0.15
+    isLoop: 0
+    volume: 0.05
+    isDestroy: 0
     lastTimePlayed: 0
   - sound: 1
     soundName: Walking
-    audioClip: {fileID: 8300000, guid: 0819a7eface9d8e4c8c0895e4605abd9, type: 3}
+    audioClip: {fileID: 8300000, guid: f2b1fafaed7d04797bf54cb764d7b96d, type: 3}
     timeDelay: 1
-    volume: 0.05
+    isLoop: 1
+    volume: 1
+    isDestroy: 0
     lastTimePlayed: 0
   - sound: 0
     soundName: MenuButton_hover
     audioClip: {fileID: 8300000, guid: 18cd59ee81d829b46ba712a03b6a64bc, type: 3}
     timeDelay: 1
+    isLoop: 0
     volume: 0.05
+    isDestroy: 0
     lastTimePlayed: 0
   - sound: 0
     soundName: Typing
     audioClip: {fileID: 8300000, guid: 18cd59ee81d829b46ba712a03b6a64bc, type: 3}
     timeDelay: 1
+    isLoop: 0
     volume: 0.05
+    isDestroy: 0
     lastTimePlayed: 0
   - sound: 0
     soundName: PauseAppear
     audioClip: {fileID: 8300000, guid: 18cd59ee81d829b46ba712a03b6a64bc, type: 3}
     timeDelay: 1
+    isLoop: 0
     volume: 0.05
-    lastTimePlayed: 0
-  - sound: 0
-    soundName: Typing
-    audioClip: {fileID: 8300000, guid: 18cd59ee81d829b46ba712a03b6a64bc, type: 3}
-    timeDelay: 1
-    volume: 0.3
+    isDestroy: 0
     lastTimePlayed: 0

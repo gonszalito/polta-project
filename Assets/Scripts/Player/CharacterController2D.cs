@@ -10,6 +10,8 @@ public class CharacterController2D : MonoBehaviour
 {
     [SerializeField] Transform Position;
 
+    [SerializeField] AudioSource audioSource;
+
     [Header("Movement Params")]
     public float runSpeed = 6.0f;
     public float jumpSpeed = 8.0f;
@@ -24,6 +26,7 @@ public class CharacterController2D : MonoBehaviour
     // other
     // private bool isGrounded = false;
     private bool isGrounded;
+    private bool isWalking;
 
     private void Awake()
     {
@@ -32,6 +35,37 @@ public class CharacterController2D : MonoBehaviour
         animator = GetComponent<Animator>();
 
         myRigidbody.gravityScale = gravityScale;
+    }
+
+    void Update()
+    {
+            if (myRigidbody.velocity.x != 0)
+        {
+            if(playerCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+            {   
+                isWalking = true;
+                // isWalking = true;
+                // AudioPlayer.GetInstance().PlaySound("Walking");
+                // SoundManager.PlaySound("Walking");
+
+            }
+        }
+        else
+        {
+            isWalking = false;
+        }
+
+        if (isWalking)
+        {
+            if(!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+          else
+            {
+                audioSource.Stop();
+            }
     }
 
     private void FixedUpdate()
@@ -94,13 +128,19 @@ public class CharacterController2D : MonoBehaviour
             animator.SetBool("isWalkingLeft", false);
         }
 
-        if (playerHasHorizontalSpeed )
+
+        if (myRigidbody.velocity.x != 0)
         {
             if(playerCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
-            {
-                SoundManager.PlaySound("Walking");
+            {   
+                // isWalking = true;
+                // isWalking = true;
+                // AudioPlayer.GetInstance().PlaySound("Walking");
+                // SoundManager.PlaySound("Walking");
+
             }
         }
+
     }
 
 

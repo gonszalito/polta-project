@@ -91,7 +91,7 @@ public class PauseMenu : MonoBehaviour
     void Pause()
     {
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+        // Time.timeScale = 0f;
         gameIsPaused = true;
         SelectedButton(pauseFirstButton);
     }
