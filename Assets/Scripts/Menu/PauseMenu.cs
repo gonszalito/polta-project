@@ -14,7 +14,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject journalMenuUI;
     public GameObject settingsMenuUI;
     public GameObject pauseFirstButton, journalFirstButton, settingsFirstButton;
-    [SerializeField] AudioSource audioSource;
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -34,7 +34,7 @@ public class PauseMenu : MonoBehaviour
             else
             {
                 Pause();
-                audioSource.Play();
+                PlayPauseAppearSound();
             }
         }
     }
@@ -76,6 +76,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         journalIsOpen = false;
         gameIsPaused = false;
+        PlayPauseClosedSound();
         Debug.Log("THROUGH JOURNAL");
     }
 
@@ -85,13 +86,14 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         settingsIsOpen = false;
         gameIsPaused = false;
+        PlayPauseClosedSound();
         Debug.Log("THROUGH SETTINGS");
     }
 
     void Pause()
     {
         pauseMenuUI.SetActive(true);
-        // Time.timeScale = 0f;
+        Time.timeScale = 0f;
         gameIsPaused = true;
         SelectedButton(pauseFirstButton);
     }
@@ -101,6 +103,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
+        PlayPauseClosedSound();
         Debug.Log("RESUME");
     }
 
@@ -126,6 +129,16 @@ public class PauseMenu : MonoBehaviour
     public void PlayHoverSound()
     {
         SoundManager.PlaySound("MenuButton_hover");
+    }
+
+    private void PlayPauseAppearSound()
+    {
+        SoundManager.PlaySound("PauseAppear");
+    }
+
+    private void PlayPauseClosedSound()
+    {
+        SoundManager.PlaySound("PauseClosed");
     }
 
     private void SelectedButton(GameObject firstSelected)
