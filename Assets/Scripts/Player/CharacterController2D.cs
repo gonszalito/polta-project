@@ -119,9 +119,11 @@ public class CharacterController2D : MonoBehaviour
         if (myRigidbody.velocity.x > 0)
         {
             animator.SetBool("isWalking", playerHasHorizontalSpeed);
+            animator.SetBool("isWalkingLeft", false);
         } else if(myRigidbody.velocity.x < 0)
         {
             animator.SetBool("isWalkingLeft", playerHasHorizontalSpeed);
+            animator.SetBool("isWalking", false);
         } else if(myRigidbody.velocity.x == 0)
         {
             animator.SetBool("isWalking", false);
