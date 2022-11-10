@@ -11,9 +11,9 @@ public class BoundaryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(((Ink.Runtime.BoolValue) DialogueManager
-        .GetInstance()
-        .GetVariableState("state_village_leave_all")).value);
+        // Debug.Log(((Ink.Runtime.BoolValue) DialogueManager
+        // .GetInstance()
+        // .GetVariableState("state_village_leave_all")).value);
         DeactivateBoundary();
     }
 

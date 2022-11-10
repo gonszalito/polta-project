@@ -30,7 +30,6 @@ public class AudioPlayer : MonoBehaviour
             audioSource.clip = soundAudioClip.audioClip;
             audioSource.enabled = true;
             this.soundTimerDictionary.Add(soundAudioClip.soundName, soundAudioClip.timeDelay);
-            Debug.Log("2");
         }
     }
 

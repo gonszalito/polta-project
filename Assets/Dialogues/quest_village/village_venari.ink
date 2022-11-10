@@ -34,7 +34,7 @@ INCLUDE village_globals.ink
 
 === village_default_venari
 = start
-Hmm?#speaker:venari #portrait:venari_default #layout:character
+Hmm?#speaker:venari #portrait:venari_default #layout:character 
 ~ talked("venari")
 -> eol
 

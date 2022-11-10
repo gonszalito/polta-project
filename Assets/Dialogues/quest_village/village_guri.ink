@@ -27,6 +27,7 @@ INCLUDE village_globals.ink
 === village_default_guri
 = start
 You tried to initiate conversation, but received no response.#layout:item
+#layout:item
 It felt awkward.#layout:item
 ~ talked("guri")
 -> eol
