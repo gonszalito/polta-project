@@ -1,22 +1,42 @@
 INCLUDE village_globals.ink
 
-->village_coco_main
 
-=== village_coco_main
 {
 - not state_village_intro:
     ~ quest_active = "village_intro"
     -> village_intro_coco_init.start
-- not state_village_bread:
+- not state_village_bread_return:
     ~ quest_active = "village_bread"
     -> village_bread_coco_init.start
-- not state_village_villager:
+- not state_village_villager_return:
     ~ quest_active = "village_villager"
     -> village_villager_coco_init.start
-- not state_village_chat:
+- not state_village_chat_return:
     ~ quest_active = "village_chat"
-    -> village_chat_coco_init.start
+    {not state_village_chat_coco:
+        -> village_chat_coco_init.start
+    - else:
+        -> village_chat_coco_init.loop
+    }
+- quest_active == "village_leave":
+    {
+    - not state_village_leave_coco:
+        -> village_leave_coco_init.start
+    - else:
+        -> village_leave_coco_init.loop
+    }
+- else:
+    -> village_default_coco.loop
 }
+
+=== village_default_coco
+= start
+I love breads!#speaker:coco #portrait:coco_happy #layout:character
+-> eol
+
+= loop
+I love breads!#speaker:coco #portrait:coco_happy #layout:character
+-> eol
 
 
 === village_intro_coco_init
@@ -25,51 +45,33 @@ Welcome to our village!#speaker:coco #portrait:coco_default #layout:character
 I'm Coco! What's your name?#speaker:coco #portrait:coco_happy
     I'm Ragi.#speaker:ragi #portrait:ragi_default
 Ragi! Nice to meet you!#speaker:coco #portrait:coco_happy
-Are you from.. Polta?#speaker:coco #portrait:coco_sad
-    Yup.#speaker:ragi #portrait:ragi_default
+You don't look like you're from around here.#speaker:coco #portrait:coco_default
+Could it be.. you're from Polta?#speaker:coco #portrait:coco_sad
+    Yes.#speaker:ragi #portrait:ragi_default
 Really?! It has been some time since we see another one from Polta!#speaker:coco #portrait:coco_happy
-Say, are there any difference between here and Polta?#speaker:coco #portrait:coco_default
-    There are.#speaker:ragi #portrait:ragi_default
+How did you come here?#speaker:coco #portrait:coco_default
 -> choice
 
 = choice
-    {village_intro_choice != 3:
-        (What should I tell her...)#speaker:ragi #portrait:ragi_default
-        * [We could never feel the sun directly.]
-            -> choice1
-        * [choice 2]
-            -> choice2
-        * [choice 3]
-            -> choice3
-        - else:
-            -> close
-    }
-
+    (How did I travel?)#speaker:ragi #portrait:ragi_default
+    * [I sailed across the sea]
+    -> choice1
+    * [I used a raft]
+    -> choice1
 
 = choice1
-~ village_intro_choice++
-Polta is located underground.#speaker:ragi #portrait:ragi_default
-The sunlight is directed through a big dome.#speaker:ragi #portrait:ragi_default
-Amazing!#speaker:coco #portrait:coco_happy
--> choice
+And suddenly I woke up at the seashore nearby.#speaker:ragi #portrait:ragi_default
+-> close
 
 = choice2
-~ village_intro_choice++
-choice2 content#speaker:ragi #portrait:ragi_default
-Amazing!#speaker:coco #portrait:coco_happy
--> choice
-
-= choice3
-~ village_intro_choice++
-choice3 content#speaker:ragi #portrait:ragi_default
-Amazing!#speaker:coco #portrait:coco_happy
--> choice
+I not really sure what happened back then.#speaker:ragi #portrait:ragi_default
+-> close
 
 
 = close
-That's all I could think of for now.#speaker:ragi #portrait:ragi_default
-I feel smarter!#speaker:coco #portrait:coco_happy
-~ queueQuest("village_bread")
+That's scary!#speaker:coco #portrait:coco_sad
+What matters is that you're still safe and sound.#speaker:coco #portrait:coco_happy
+~ doneQuest("village_intro")
 
 -> eol
 
@@ -78,36 +80,41 @@ I feel smarter!#speaker:coco #portrait:coco_happy
 
 = start
 {
-- village_bread_talked == false:
+- not state_village_bread_init:
     -> help
-- village_bread_obtained == false:
+- not state_village_bread_flour:
     -> hint
-- village_bread_obtained == true:
+- not state_village_bread_return:
     -> thank
 }
 
 = help
-Ah by the way, could you help me fetch that flour over there?#speaker:coco #portrait:coco_default #layout:character
-    Okay.#speaker:ragi #portrait:ragi_default
-Thank you!#speaker:coco #portrait:coco_happy
-~ village_bread_talked = true
+You can stay here for a while if you want! It's safe and-#speaker:coco #portrait:coco_default #layout:character
+Ah! That's right! I need to start baking a new batch right now!!#speaker:coco #portrait:coco_happy
+    ...#speaker:ragi #portrait:ragi_default
+Oh, we are short on flour to make our dough.#speaker:coco #portrait:coco_sad
+Could you help me fetch a pack of flour?#speaker:coco #portrait:coco_default
+    Sure.#speaker:ragi #portrait:ragi_default
+Thank you! It's right beside the bakery, near the pile of boxes.#speaker:coco #portrait:coco_happy
+~ doneQuest("village_bread_init")
 -> eol
 
 = hint
 Having trouble finding it? It's beside the bakery.#speaker:coco #portrait:coco_default #layout:character
+~ talked("coco")
 -> eol
 
 = thank
-Thanks, you're a lifesaver!#speaker:coco #portrait:coco_happy #layout:character
+Perfect! Thank you so much!#speaker:coco #portrait:coco_happy #layout:character
 I've been baking since I was young.#speaker:coco #portrait:coco_default
 My big bro taught me all about baking!#speaker:coco #portrait:coco_happy
-We occasionally went to the city's bakery just to buy recipe.#speaker:coco #portrait:coco_default
 I miss him...#speaker:coco #portrait:coco_sad
     ...#speaker:ragi #portrait:ragi_default
-Oh, it's finished! Here, have a bread.#speaker:coco #portrait:coco_happy
-Fresh from the oven.#speaker:coco #portrait:coco_happy
-    Thank you.#speaker:ragi #portrait:ragi_default
-~ queueQuest("village_villager")
+    (I wonder where he is.)#speaker:ragi #portrait:ragi_default
+It's done!#speaker:coco #portrait:coco_happy
+Here, you can have some.#speaker:coco #portrait:coco_default
+Fresh bread from the oven! Hope you like it.#speaker:coco #portrait:coco_happy
+~ doneQuest("village_bread_return")
 -> eol
 
 
@@ -115,40 +122,73 @@ Fresh from the oven.#speaker:coco #portrait:coco_happy
 === village_villager_coco_init
 = start
 {
-- not village_villager_initiated:
-    ~ village_villager_initiated = true
-    Since you're new here, why don't you introduce yourself to the other villagers?#speaker:coco #portrait:coco_default #layout:character
+- not state_village_villager_init:
+    -> init
+- not state_village_villager_all:
+    -> helper
+- not state_village_villager_return:
+    -> finish
 }
-{
-- village_villager_talked != amount_npc - 1:
-    There are {amount_npc - village_villager_talked - 1} other villagers you haven't met yet!#speaker:coco #portrait:coco_happy #layout:character
-    -> eol
-- else:
-    Enjoy your stay!#speaker:coco #portrait:coco_happy #layout:character
-    ~ queueQuest("village_chat")
-    -> eol
-}
+
+= init
+Since you're here, why don't you introduce yourself to the others?#speaker:coco #portrait:coco_happy #layout:character
+It's safe in the village, so feel free to roam around.#speaker:coco #portrait:coco_default
+Oh and while you're at it, you could give the bread that I have also prepared for the others too!#speaker:coco #portrait:coco_happy
+What do you think? Will you help me once more?#speaker:coco #portrait:coco_default
+    Okay.#speaker:ragi #portrait:ragi_default
+Thanks a bunch!! It's a pleasure to have you here in the village. See you later!#speaker:coco #portrait:coco_happy
+~ doneQuest("village_villager_init")
+-> eol
+
+= helper
+Oh, you still have {amount_npc - village_villager_talked} bread left.#speaker:coco #portrait:coco_default #layout:character
+Make sure to give them all out, alright?#speaker:coco #portrait:coco_happy
+~ talked("coco")
+-> eol
+
+= finish
+Hey, you're back!#speaker:coco #portrait:coco_happy #layout:character
+How was it? The people here are nice aren't they?#speaker:coco #portrait:coco_default
+(How was it?)#speaker:ragi #portrait:ragi_default
+* [It was nice.]
+-> close
+* [It was something.]
+-> close
+
+= close
+I hope you enjoy every moment of it!#speaker:coco #portrait:coco_happy
+You may walk around the village and take a break.#speaker:coco #portrait:coco_default
+See you around!#speaker:coco #portrait:coco_happy
+~ doneQuest("village_villager_return")
+-> eol
 
 === village_chat_coco_init
 = start
-Hey Ragi, how did you come here from Polta?#speaker:coco #portrait:coco_default #layout:character
-    My father left me a boat and a guide.#speaker:ragi #portrait:ragi_default
-"Left" you?#speaker:coco #portrait:coco_sad
-    He went here and has been missing since.#speaker:ragi #portrait:ragi_default
+Hey Ragi, why did you come here from Polta?#speaker:coco #portrait:coco_default #layout:character
+    My father went here and has been missing since.#speaker:ragi #portrait:ragi_default
     I'm looking to reunite with him again.#speaker:ragi #portrait:ragi_default
-I see...#speaker:coco #portrait:coco_sad
-About 2 years ago, there was also a man who came here from Polta.#speaker:coco #portrait:coco_default
-The man was really knowledgeable. He helped the village a lot.#speaker:coco #portrait:coco_happy
-My brother was very fond of him. They often talk together.#speaker:coco #portrait:coco_default
-It might be your father. You look a lot like him.#speaker:coco #portrait:coco_default
-    How was his appearance?#speaker:ragi #portrait:ragi_default
-Hmm, let me think...#speaker:coco #portrait:coco_default
-He's tall, wears glasses, and always bring a book to write.#speaker:coco #portrait:coco_default
-    That might be Dad!#speaker:ragi #portrait:ragi_default
-Really?!#speaker:coco #portrait:coco_happy
-But...#speaker:coco #portrait:coco_sad
-He ventured deep into the forest and has never come back since...#speaker:coco #portrait:coco_sad
-    ...#speaker:ragi #portrait:ragi_default
-    Then I will go to the forest!#speaker:ragi #portrait:ragi_default
+I see...#speaker:coco #portrait:coco_frown
+Let me know if I could help in any way!#speaker:coco #portrait:coco_happy
+~ doneQuest("village_chat_coco")
 -> eol
 
+= loop
+I hope all the best for you!#speaker:coco #portrait:coco_happy
+~ talked("coco")
+-> eol
+
+=== village_leave_coco_init
+= start
+Oh... you're leaving the village?#speaker:coco #portrait:coco_frown #layout: character
+But we've just met...#speaker:coco #portrait:coco_sad
+It's dangerous to go alone! Take this.#speaker:coco #portrait:coco_default
+You have obtained Coco's signature bread.#layout:item
+    Thank you.#speaker:ragi #portrait:ragi_default #layout:character
+Be careful out there!#speaker:coco #portrait:coco_happy
+~ doneQuest("village_leave_coco")
+-> eol
+
+= loop
+Come back soon!#speaker:coco #portrait:coco_happy #layout:character
+~ talked("coco")
+-> eol
