@@ -4,7 +4,7 @@ INCLUDE village_globals.ink
 
 === village_object_flour_main
 {
-- quest_active == "village_bread" && not village_bread_obtained:
+- quest_active == "village_bread" && state_village_bread_init:
     -> village_bread_object_flour.start
 - else:
     -> village_default_object_flour.start
@@ -13,8 +13,8 @@ INCLUDE village_globals.ink
 
 === village_bread_object_flour
 = start
-~ village_bread_obtained = true
-Obtained flour!#layout:item
+You have obtained flour!#layout:item
+~ doneQuest("village_bread_flour")
 -> eol
 
 === village_default_object_flour
