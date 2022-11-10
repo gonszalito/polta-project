@@ -10,6 +10,7 @@ public class DialogueTrigger : MonoBehaviour
 
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
+    [SerializeField] private Animator animator;
 
     [Header ("Ink JSON")]
     [SerializeField] private TextAsset inkJSON;
@@ -35,14 +36,14 @@ public class DialogueTrigger : MonoBehaviour
     }
     
     private void Update() {
-  
+        
         if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
             visualCue.SetActive(true);
+            ChangeVisualCue();
+
             if (InputManager.GetInstance().GetInteractPressed())
             {
-
-          
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
             }
         }
@@ -70,6 +71,173 @@ public class DialogueTrigger : MonoBehaviour
     //     }
 
     // }
+
+    private void CheckDictionary()
+    {
+        
+    }
+
+    private void ChangeVisualCue()
+    {
+    //     string quest_giver = ((Ink.Runtime.BoolValue) DialogueManager
+    //     .GetInstance()
+    //     .GetVariableState("quest_giver")).value;
+
+        bool quest_giver_coco = ((Ink.Runtime.BoolValue) DialogueManager
+        .GetInstance()
+        .GetVariableState("quest_giver_coco")).value;
+
+        bool talked_coco = ((Ink.Runtime.BoolValue) DialogueManager
+        .GetInstance()
+        .GetVariableState("talked_coco")).value;
+
+        bool quest_giver_feru = ((Ink.Runtime.BoolValue) DialogueManager
+        .GetInstance()
+        .GetVariableState("quest_giver_feru")).value;
+
+        bool talked_feru = ((Ink.Runtime.BoolValue) DialogueManager
+        .GetInstance()
+        .GetVariableState("talked_feru")).value;
+
+        bool quest_giver_aru = ((Ink.Runtime.BoolValue) DialogueManager
+        .GetInstance()
+        .GetVariableState("quest_giver_aru")).value;
+
+        bool talked_aru = ((Ink.Runtime.BoolValue) DialogueManager
+        .GetInstance()
+        .GetVariableState("talked_aru")).value;
+
+        bool quest_giver_venari = ((Ink.Runtime.BoolValue) DialogueManager
+        .GetInstance()
+        .GetVariableState("quest_giver_venari")).value;
+
+        bool talked_venari = ((Ink.Runtime.BoolValue) DialogueManager
+        .GetInstance()
+        .GetVariableState("talked_venari")).value;
+
+        bool quest_giver_guri = ((Ink.Runtime.BoolValue) DialogueManager
+        .GetInstance()
+        .GetVariableState("quest_giver_guri")).value;
+
+        bool talked_guri = ((Ink.Runtime.BoolValue) DialogueManager
+        .GetInstance()
+        .GetVariableState("talked_guri")).value;
+
+        bool quest_giver_object_flour = ((Ink.Runtime.BoolValue) DialogueManager
+        .GetInstance()
+        .GetVariableState("quest_giver_object_flour")).value;
+
+        bool quest_giver_trigger_quit = ((Ink.Runtime.BoolValue) DialogueManager
+        .GetInstance()
+        .GetVariableState("quest_giver_trigger_quit")).value;
+
+        bool state_village_bread_flour = ((Ink.Runtime.BoolValue) DialogueManager
+        .GetInstance()
+        .GetVariableState("state_village_bread_flour")).value;
+
+        if(interactObject.name == "Coco")
+        {
+         
+            if (quest_giver_coco)
+            {
+                animator.Play("QuestDialogue");
+                Debug.Log("coco");
+
+            Debug.Log(quest_giver_coco + "coco giver");
+            }
+            else if(!talked_coco)
+            {
+                animator.Play("ActiveDialogue");
+                   Debug.Log(talked_coco + "coco tlaked");
+            }
+            else 
+            {
+                animator.Play("InactiveDialogue");
+            }
+        }
+
+        if(interactObject.name == "Aru")
+        {
+            if (quest_giver_aru)
+            {
+                animator.Play("QuestDialogue");
+            }
+            else if(!talked_aru)
+            {
+                animator.Play("ActiveDialogue");
+            }
+            else 
+            {
+                animator.Play("InactiveDialogue");
+            }
+        }
+
+        if(interactObject.name == "Feru")
+        {
+            if (quest_giver_feru)
+            {
+                animator.Play("QuestDialogue");
+            }
+            else if(!talked_feru)
+            {
+                animator.Play("ActiveDialogue");
+            }
+            else 
+            {
+                animator.Play("InactiveDialogue");
+            }
+        }
+        
+        if(interactObject.name == "Guri")
+        {
+            if (quest_giver_guri)
+            {
+                animator.Play("QuestDialogue");
+            }
+            else if(!talked_guri)
+            {
+                animator.Play("ActiveDialogue");
+            }
+            else 
+            {
+                animator.Play("InactiveDialogue");
+            }
+        }
+
+        if(interactObject.name == "Venari")
+        {
+            if (quest_giver_venari)
+            {
+                animator.Play("QuestDialogue");
+            }
+            else if(!talked_venari)
+            {
+                animator.Play("ActiveDialogue");
+            }
+            else 
+            {
+                animator.Play("InactiveDialogue");
+            }
+        }
+
+        if(interactObject.name == "Flour")
+        {
+            if (quest_giver_object_flour)
+            {
+                animator.Play("QuestDialogue");
+            }
+            else
+            {
+                animator.Play("ActiveDialogue");
+            }
+            // else 
+            // {
+            //     animator.Play("InactiveDialogue");
+            // }
+        }
+        
+    
+    }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {    

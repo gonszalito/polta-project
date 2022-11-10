@@ -59,7 +59,7 @@ public class CharacterController2D : MonoBehaviour
         {
             if(!audioSource.isPlaying)
             {
-                audioSource.Play();
+                // audioSource.Play();
             }
         }
           else
