@@ -74,6 +74,7 @@ public class CharacterController2D : MonoBehaviour
        
         if (DialogueManager.GetInstance().dialogueIsPlaying)
         {
+            animator.SetBool("isWalkingLeft", false);
             animator.SetBool("isWalking", false);
             // animator.Play("idle");
             return;
