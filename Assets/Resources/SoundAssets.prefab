@@ -50,7 +50,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 78d2da28c38914b798c4ded54b39b861, type: 3}
     timeDelay: 0
     isLoop: 0
-    volume: 0.4
+    volume: 0.05
     isDestroy: 0
     lastTimePlayed: 0
   - sound: 1
@@ -64,9 +64,9 @@ MonoBehaviour:
   - sound: 0
     soundName: MenuButton_hover
     audioClip: {fileID: 8300000, guid: 898f11348c1b34fbd853b6bf1b61e26f, type: 3}
-    timeDelay: 1
+    timeDelay: 0
     isLoop: 0
-    volume: 0.4
+    volume: 0.05
     isDestroy: 0
     lastTimePlayed: 0
   - sound: 0
@@ -80,16 +80,16 @@ MonoBehaviour:
   - sound: 0
     soundName: PauseAppear
     audioClip: {fileID: 8300000, guid: 42e77415094144744968e198157e4221, type: 3}
-    timeDelay: 1
+    timeDelay: 0
     isLoop: 0
-    volume: 0.4
+    volume: 0.05
     isDestroy: 0
     lastTimePlayed: 0
   - sound: 0
     soundName: PauseClosed
     audioClip: {fileID: 8300000, guid: a0a2bf5f916c143d6adebbc4fb81cf50, type: 3}
-    timeDelay: 1
+    timeDelay: 0
     isLoop: 0
-    volume: 0.4
+    volume: 0.05
     isDestroy: 0
     lastTimePlayed: 0

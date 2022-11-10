@@ -1650,9 +1650,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2267e5892f3724e2ea47c9cc397ca4d7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 47273edbba4d24ee7bc9380f602493a3, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2749,6 +2749,7 @@ Transform:
   - {fileID: 1434893889}
   - {fileID: 1699473986}
   - {fileID: 1633744553}
+  - {fileID: 1386372714}
   m_Father: {fileID: 1136944525}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9154,11 +9155,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1811403309}
-  - {fileID: 681848691}
+  m_Children: []
   m_Father: {fileID: 437607710}
-  m_RootOrder: 0
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1386372715
 SpriteRenderer:
@@ -13696,6 +13695,7 @@ GameObject:
   - component: {fileID: 2143172424}
   - component: {fileID: 2143172426}
   - component: {fileID: 2143172425}
+  - component: {fileID: 2143172427}
   m_Layer: 5
   m_Name: Pause Menu
   m_TagString: Untagged
