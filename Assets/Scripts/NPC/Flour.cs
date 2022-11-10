@@ -14,15 +14,15 @@ public class Flour : MonoBehaviour
 
     private void Update() 
     {
-      bool acorn = ((Ink.Runtime.BoolValue) DialogueManager
-      .GetInstance()
-      .GetVariableState("flour")).value;
+      // bool acorn = ((Ink.Runtime.BoolValue) DialogueManager
+      // .GetInstance()
+      // .GetVariableState("flour")).value;
 
       
-      if (acorn)
-      {
-        // trigger.enabled = false; 
-        triggerContainer.SetActive(false);
-      }
+      // if (acorn)
+      // {
+      //   // trigger.enabled = false; 
+      //   triggerContainer.SetActive(false);
+      // }
     }
 }
