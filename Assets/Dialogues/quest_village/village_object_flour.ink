@@ -7,6 +7,7 @@ INCLUDE village_globals.ink
 - quest_active == "village_bread" && state_village_bread_init:
     -> village_bread_object_flour.start
 - else:
+    ~ state_village_leave_all = true
     -> village_default_object_flour.start
 }
 

@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SandBox.unity
     guid: 3d17738902ef73a4591c64cb4691207e
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 46a357df3ad1b411883d38851d668a1e
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 979c48e4dbc28844081e391e4586d1f7, type: 2}
