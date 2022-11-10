@@ -10754,7 +10754,7 @@ PrefabInstance:
       objectReference: {fileID: 5439510634381186325}
     - target: {fileID: 41531435574994344, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
       propertyPath: frequencyLevel
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 41531435574994344, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
       propertyPath: displayNameText
@@ -10803,11 +10803,11 @@ PrefabInstance:
     - target: {fileID: 41531435574994344, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
       propertyPath: dialogueTypingSoundClips.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: d9553421bae3f994bba50de72f44dd7b, type: 3}
+      objectReference: {fileID: 8300000, guid: b9f7c80f348d5413099ef8e004b8c324, type: 3}
     - target: {fileID: 41531435574994344, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
       propertyPath: dialogueTypingSoundClips.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: 18cd59ee81d829b46ba712a03b6a64bc, type: 3}
+      objectReference: {fileID: 8300000, guid: 0a0b6618be52c4b8f86335cbf64a842b, type: 3}
     - target: {fileID: 41531435721520448, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
       propertyPath: m_Name
       value: Managers

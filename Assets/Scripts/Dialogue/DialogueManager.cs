@@ -166,7 +166,7 @@ public class DialogueManager : MonoBehaviour
             // set text for the current dialogue line
             displayLineCoroutine = StartCoroutine(DisplayLine(currentStory.Continue()));
            
-           
+            audioSource.PlayOneShot(dialogueTypingSoundClips[1]);
             HandleTags(currentStory.currentTags);
         }
         else 
@@ -348,6 +348,7 @@ public class DialogueManager : MonoBehaviour
 
     private void HandleTags(List<string> currentTags)
     {
+         string portraitTag = "";
         // Loop trough all tags
         foreach ( string tag in currentTags)
         {
@@ -359,22 +360,49 @@ public class DialogueManager : MonoBehaviour
             string tagKey = splitTag[0].Trim();
             string tagValue = splitTag[1].Trim();
 
+            // if (tagKey == LAYOUT_TAG)
+            // {
+            //     layoutAnimator.Play(tagValue);
+            // }
+            // // else if ()
+            // // {
+
+            // // }
+
+            // if (dialogueUI.activeSelf)
+            // {
+            //     Debug.Log("this works");
+            //     portraitAnimator.Play(portraitTag);
+            // }
+            
+            // layoutAnimator.Play("character");
+
             switch (tagKey)
             {
+                case LAYOUT_TAG:
+                    layoutAnimator.Play(tagValue);
+                    // if(tagValue == "item")
+                    // {
+                    //     dialogueUI.SetActive(false); 
+                    // }
+                    // else if(tagValue == "character")
+                    // {
+                    //     dialogueUI.SetActive(true); 
+                    //     portraitAnimator.Play(portraitTag);
+                    // }
+                  break;
                 case SPEAKER_TAG:
                     displayNameText.text = tagValue;
                     break;
                 case PORTRAIT_TAG:
                     portraitAnimator.Play(tagValue);
-                    break;
-                case LAYOUT_TAG:
-                    layoutAnimator.Play(tagValue);
+                    portraitTag = tagValue;
                     break;
                 default:
                     Debug.Log(tag);
                     break;
-
             }
+
         }
         
     }
