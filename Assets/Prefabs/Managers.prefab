@@ -231,13 +231,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c598047288f64c24aa7ba7b5f7959030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typingSpeed: 0.04
   dialoguePanel: {fileID: 0}
+  continueIcon: {fileID: 0}
   dialogueUI: {fileID: 0}
   dialogueText: {fileID: 0}
+  displayNameText: {fileID: 0}
+  portraitAnimator: {fileID: 0}
+  questionText: {fileID: 0}
   choices:
   - {fileID: 0}
   - {fileID: 0}
   loadGlobalsJSON: {fileID: 4900000, guid: f98af066732edbb4aa301700f3410fa8, type: 3}
+  dialogueTypingSoundClips: []
+  frequencyLevel: 2
+  minPitch: 0.5
+  maxPitch: 3
+  stopAudioSource: 0
+  makePredictable: 0
 --- !u!1 &41531435721520448
 GameObject:
   m_ObjectHideFlags: 0

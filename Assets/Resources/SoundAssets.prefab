@@ -71,7 +71,7 @@ MonoBehaviour:
     lastTimePlayed: 0
   - sound: 0
     soundName: Typing
-    audioClip: {fileID: 8300000, guid: 18cd59ee81d829b46ba712a03b6a64bc, type: 3}
+    audioClip: {fileID: 8300000, guid: b9f7c80f348d5413099ef8e004b8c324, type: 3}
     timeDelay: 1
     isLoop: 0
     volume: 0.05
