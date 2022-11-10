@@ -20,6 +20,19 @@ public class DialogueVariables
         }
     }
 
+    // public string GetQuestValue()
+    // {
+    //     string quest_giver;
+    //     if (variables.TryGetValue("quest_giver", out quest_giver))
+    //     {
+    //         return quest_giver;
+    //     }
+    //     else
+    //     { 
+    //         return null;
+    //     }
+    // }
+
     public void StartListening(Story story)
     {
         VariablesToStory(story);
