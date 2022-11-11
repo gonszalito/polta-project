@@ -7,7 +7,9 @@ INCLUDE village_globals.ink
 - quest_active == "village_bread" && state_village_bread_init:
     -> village_bread_object_flour.start
 - else:
-    ~ state_village_leave_all = true
+    {ending_cheat >= 5: 
+        ~ state_village_leave_all = true
+    }
     -> village_default_object_flour.start
 }
 
@@ -21,4 +23,5 @@ You have obtained flour!#layout:item
 === village_default_object_flour
 = start
 Flour for bakery.#layout:item
+~ ending_cheat++
 -> eol

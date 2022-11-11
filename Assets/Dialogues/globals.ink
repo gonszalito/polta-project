@@ -53,3 +53,4 @@ VAR talked_loop_guri = -1
 VAR village_intro_choice = 0
 VAR village_villager_talked = 0
 VAR village_leave_talked = 0
+VAR ending_cheat = 0
