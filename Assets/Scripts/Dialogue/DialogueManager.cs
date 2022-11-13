@@ -37,6 +37,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private float minPitch = 0.5f;
     [Range(-3,3)]
     [SerializeField] private float maxPitch = 3f;
+    [Range(0,10)]
+    [SerializeField] private float audioVolume = 1;
     [SerializeField] private bool stopAudioSource;
     [SerializeField] private bool makePredictable;
 
@@ -166,7 +168,7 @@ public class DialogueManager : MonoBehaviour
             // set text for the current dialogue line
             displayLineCoroutine = StartCoroutine(DisplayLine(currentStory.Continue()));
            
-            audioSource.PlayOneShot(dialogueTypingSoundClips[1]);
+            audioSource.PlayOneShot(dialogueTypingSoundClips[1], audioVolume);
             HandleTags(currentStory.currentTags);
         }
         else 
@@ -213,7 +215,7 @@ public class DialogueManager : MonoBehaviour
                 // audioSource.pitch = Random.Range(minPitch,maxPitch);
                 // audioSource.PlayOneShot(soundClip);  
             }
-            audioSource.PlayOneShot(dialogueTypingSoundClips[0]);
+            audioSource.PlayOneShot(dialogueTypingSoundClips[0],audioVolume);
         }
     }
 
