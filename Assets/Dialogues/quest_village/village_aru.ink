@@ -4,7 +4,7 @@ INCLUDE village_globals.ink
 
 === village_aru_main
 {
-- not state_village_bread_return:
+- not state_village_villager_init:
     -> village_default_aru.start
 - quest_active == "village_villager":
     {not state_village_villager_aru:
@@ -44,10 +44,11 @@ I hop from place to place, you might not see me here often, heh.#speaker:aru #po
 Hey, hey, little fella.#speaker:aru #portrait:aru_default
 Would you like to see my wares? I'll give special discount just for you, little man.#speaker:aru #portrait:aru_default
 I don't usually do this y'know, heh. But I'm in a pretty good mood right now.#speaker:aru #portrait:aru_default
+(..?)#speaker:ragi #portrait:ragi_default
 * [...]
     -> bread
 * [I.. uhh..]
-    ->bread
+    -> bread
 
 = bread
 Heh, speechless there? Just wait until you see the things I got my hands on right here.#speaker:aru #portrait:aru_default
@@ -75,7 +76,6 @@ You don't know?#speaker:aru #portrait:aru_default
 Lure them into eating the beads, and poof! They're gone.#speaker:aru #portrait:aru_default
 Take some. For your safety, heh.#speaker:aru #portrait:aru_default
     You have obtained beads!#layout:item
-    Thank you.#speaker:ragi #portrait:ragi_default
 ~ doneQuest("village_chat_aru")
 -> eol
 
