@@ -5,7 +5,7 @@ INCLUDE village_globals.ink
 === village_feru_main
 
 {
-- not state_village_bread_return:
+- not state_village_villager_init:
     -> village_default_feru.start
 - quest_active == "village_villager":
     {not state_village_villager_feru:

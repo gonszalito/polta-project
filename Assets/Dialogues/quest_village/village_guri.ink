@@ -5,7 +5,7 @@ INCLUDE village_globals.ink
 === village_guri_main
 
 {
-- not state_village_bread_return:
+- not state_village_villager_init:
     -> village_default_guri.start
 - quest_active == "village_villager":
     {not state_village_villager_guri:
@@ -27,7 +27,6 @@ INCLUDE village_globals.ink
 === village_default_guri
 = start
 You tried to initiate conversation, but received no response.#layout:item
-#layout:item
 It felt awkward.#layout:item
 ~ talked("guri")
 -> eol
@@ -69,10 +68,9 @@ It felt awkward.#layout:item
 === village_leave_guri_init
 = start
 You tried to initiate conversation.#layout:item
-...#speaker:guri #portrait:guri_default
+...#layout:item
 He gives you a package.#layout:item
 It's a bento.#layout:item
-    Thank you.#speaker:ragi #portrait:ragi_default
 He smiles at you.#layout:item
 ~ doneQuest("village_leave_guri")
 -> eol

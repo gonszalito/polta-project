@@ -5,7 +5,7 @@ INCLUDE village_globals.ink
 === village_venari_main
 
 {
-- not state_village_bread_return:
+- not state_village_villager_init:
     -> village_default_venari.start
 - quest_active == "village_villager":
     {not state_village_villager_venari:
@@ -30,6 +30,8 @@ INCLUDE village_globals.ink
     - else:
         -> village_leave_venari_init.loop
     }
+- else:
+    -> village_leave_venari_init.loop
 }
 
 === village_default_venari
