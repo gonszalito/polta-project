@@ -94,6 +94,5 @@ I still have a lot to teach you.#speaker:venari #portrait:venari_default
 
 = loop
 Be careful out there.#speaker:venari #portrait:venari_default #layout:character
-The forest entrance is on the direction where you came from.#speaker:venari #portrait:venari_default
 ~ talked("venari")
 -> eol

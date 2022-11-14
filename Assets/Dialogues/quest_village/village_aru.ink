@@ -26,6 +26,8 @@ INCLUDE village_globals.ink
     - else:
         -> village_leave_aru_init.loop
     }
+- else:
+    -> village_default_aru.start
 }
 
 === village_default_aru
