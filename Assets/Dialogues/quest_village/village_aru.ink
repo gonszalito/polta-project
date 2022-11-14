@@ -78,7 +78,7 @@ You don't know?#speaker:aru #portrait:aru_default
 Lure them into eating the beads, and poof! They're gone.#speaker:aru #portrait:aru_default
 Take some. For your safety, heh.#speaker:aru #portrait:aru_default
     You have obtained beads!#layout:item
-Thanks.#speaker:ragi #portrait:ragi_default
+Thanks.#speaker:ragi #portrait:ragi_default #layout:character
 ~ doneQuest("village_chat_aru")
 -> eol
 

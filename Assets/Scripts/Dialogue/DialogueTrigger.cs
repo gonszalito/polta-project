@@ -91,6 +91,14 @@ public class DialogueTrigger : MonoBehaviour
         .GetInstance()
         .GetVariableState("talked_coco")).value;
 
+        bool quest_giver_boni = ((Ink.Runtime.BoolValue) DialogueManager
+        .GetInstance()
+        .GetVariableState("quest_giver_boni")).value;
+
+        bool talked_boni = ((Ink.Runtime.BoolValue) DialogueManager
+        .GetInstance()
+        .GetVariableState("talked_boni")).value;
+
         bool quest_giver_feru = ((Ink.Runtime.BoolValue) DialogueManager
         .GetInstance()
         .GetVariableState("quest_giver_feru")).value;
@@ -141,20 +149,36 @@ public class DialogueTrigger : MonoBehaviour
             if (quest_giver_coco)
             {
                 animator.Play("QuestDialogue");
-                Debug.Log("coco");
 
-            Debug.Log(quest_giver_coco + "coco giver");
             }
             else if(!talked_coco)
             {
                 animator.Play("ActiveDialogue");
-                   Debug.Log(talked_coco + "coco tlaked");
             }
             else 
             {
                 animator.Play("InactiveDialogue");
             }
         }
+
+        if(interactObject.name == "Boni")
+        {
+         
+            if (quest_giver_boni)
+            {
+                animator.Play("QuestDialogue");
+
+            }
+            else if(!talked_boni)
+            {
+                animator.Play("ActiveDialogue");
+            }
+            else 
+            {
+                animator.Play("InactiveDialogue");
+            }
+        }
+
 
         if(interactObject.name == "Aru")
         {
