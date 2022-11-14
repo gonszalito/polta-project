@@ -21,6 +21,7 @@ Sides:
 ~ talked_venari = false
 ~ talked_aru = false
 ~ talked_guri = false
+~ talked_boni = false
 
 === function refreshQuestGiverNPC
 ~ quest_giver_coco = false
@@ -28,6 +29,7 @@ Sides:
 ~ quest_giver_aru = false
 ~ quest_giver_venari = false
 ~ quest_giver_guri = false
+~ quest_giver_boni = false
 ~ quest_giver_object_flour = false
 ~ quest_giver_trigger_quit = false
 
@@ -48,6 +50,9 @@ Sides:
 - "guri":
     ~ talked_guri = true
     ~ quest_giver_guri = false
+- "boni":
+    ~ talked_boni = true
+    ~ quest_giver_boni = false
 }
 
 === function untalk(name)
@@ -62,6 +67,8 @@ Sides:
     ~ talked_feru = false
 - "guri":
     ~ talked_guri = false
+- "boni":
+    ~ talked_boni = false
 }
 
 === function queueQuest(quest_name)
@@ -88,6 +95,7 @@ Sides:
     ~ quest_giver_aru = true
     ~ quest_giver_venari = true
     ~ quest_giver_guri = true
+    ~ quest_giver_boni = true
 
 - "village_villager_return":
     ~ quest_giver_coco = true
@@ -114,6 +122,7 @@ Sides:
     ~ quest_giver_aru = true
     ~ quest_giver_venari = true
     ~ quest_giver_guri = true
+    ~ quest_giver_boni = true
     
 - "village_leave_quit":
     ~ quest_giver_trigger_quit = true
@@ -164,6 +173,12 @@ Sides:
     ~ village_villager_talked++
     ~ state_village_villager_guri = true
     ~ quest_giver_guri = false
+    ~ doneQuest("village_villager_all")
+
+- "village_villager_boni":
+    ~ village_villager_talked++
+    ~ state_village_villager_boni = true
+    ~ quest_giver_boni = false
     ~ doneQuest("village_villager_all")
 
 - "village_villager_all":
@@ -235,6 +250,12 @@ Sides:
     ~ state_village_leave_venari = true
     ~ village_leave_talked++
     ~ quest_giver_venari = false
+    ~ doneQuest("village_leave_all")
+
+- "village_leave_boni":
+    ~ state_village_leave_boni = true
+    ~ village_leave_talked++
+    ~ quest_giver_boni = false
     ~ doneQuest("village_leave_all")
 
 - "village_leave_all":

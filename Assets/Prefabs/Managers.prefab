@@ -233,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typingSpeed: 0.04
   dialoguePanel: {fileID: 0}
+  portraitPanel: {fileID: 0}
   continueIcon: {fileID: 0}
   dialogueUI: {fileID: 0}
   dialogueText: {fileID: 0}
@@ -247,6 +248,7 @@ MonoBehaviour:
   frequencyLevel: 2
   minPitch: 0.5
   maxPitch: 3
+  audioVolume: 0.6
   stopAudioSource: 0
   makePredictable: 0
 --- !u!1 &41531435721520448

@@ -1,5 +1,4 @@
-
-
+// // // INCLUDE village_boni.ink
 // // // INCLUDE village_coco.ink
 // // // INCLUDE village_feru.ink
 // // // INCLUDE village_aru.ink
