@@ -42,7 +42,8 @@ I sell wares, tools, anything!#speaker:aru #portrait:aru_default
 I hop from place to place, you might not see me here often, heh.#speaker:aru #portrait:aru_default
     ...#speaker:ragi #portrait:ragi_default
 Hey, hey, little fella.#speaker:aru #portrait:aru_default
-Would you like to see my wares? I'll give special discount just for you, little man.#speaker:aru #portrait:aru_default
+Would you like to see my wares?#speaker:aru #portrait:aru_default
+I'll give special discount just for you, little man.#speaker:aru #portrait:aru_default
 I don't usually do this y'know, heh. But I'm in a pretty good mood right now.#speaker:aru #portrait:aru_default
 (..?)#speaker:ragi #portrait:ragi_default
 * [...]
@@ -51,7 +52,8 @@ I don't usually do this y'know, heh. But I'm in a pretty good mood right now.#sp
     -> bread
 
 = bread
-Heh, speechless there? Just wait until you see the things I got my hands on right here.#speaker:aru #portrait:aru_default
+Heh, speechless there?#speaker:aru #portrait:aru_default
+Just wait until you see the things I got my hands on right here.#speaker:aru #portrait:aru_default
 (I think I should give the bread now..)#speaker:ragi #portrait:ragi_default
 * [(Hand over Coco's bread.)]
 Oh, heh, thank you little man. Tell Coco my gratitude.#speaker:aru #portrait:aru_default
@@ -76,6 +78,7 @@ You don't know?#speaker:aru #portrait:aru_default
 Lure them into eating the beads, and poof! They're gone.#speaker:aru #portrait:aru_default
 Take some. For your safety, heh.#speaker:aru #portrait:aru_default
     You have obtained beads!#layout:item
+Thanks.#speaker:ragi #portrait:ragi_default
 ~ doneQuest("village_chat_aru")
 -> eol
 

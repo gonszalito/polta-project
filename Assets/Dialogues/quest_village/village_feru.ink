@@ -82,8 +82,9 @@ I see. So I take it that you'll go inside the forest?#speaker:feru #portrait:fer
     Yes.#speaker:ragi #portrait:ragi_default
 In that case, take this.#speaker:feru #portrait:feru_default
     You have obtained a small bag!#layout:item
-He entrusted this for his son's arrival.#speaker:feru #portrait:feru_default
+He entrusted this for his son's arrival.#speaker:feru #portrait:feru_default #layout:character
 Make sure to tell the others before departing.#speaker:feru #portrait:feru_default
+    Thank you.#speaker:ragi #portrait:ragi_default
 ~ doneQuest("village_leave_init")
 -> eol
 

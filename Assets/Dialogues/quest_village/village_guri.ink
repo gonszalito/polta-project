@@ -59,7 +59,7 @@ It felt awkward.#layout:item
 ...#speaker:guri #portrait:guri_default #layout:character
 (I'll just put the bread on the counter..)#speaker:ragi #portrait:ragi_default
 * [(Put Coco's bread.)]
-\*nods\*#speaker:guri #portrait:guri_default
+He nodded.#layout:item
 
 ~ doneQuest("village_villager_guri")
 ~ talked_loop_guri = 0
@@ -72,6 +72,7 @@ You tried to initiate conversation.#layout:item
 He gives you a package.#layout:item
 It's a bento.#layout:item
 He smiles at you.#layout:item
+Thanks.#speaker:ragi #portrait:ragi_default #layout:character
 ~ doneQuest("village_leave_guri")
 -> eol
 

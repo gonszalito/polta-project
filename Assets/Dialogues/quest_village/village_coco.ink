@@ -141,7 +141,12 @@ Thanks a bunch!! It's a pleasure to have you here in the village. See you later!
 -> eol
 
 = helper
-Oh, you still have {amount_npc - village_villager_talked} bread left.#speaker:coco #portrait:coco_default #layout:character
+{
+- amount_npc - village_villager_talked > 1:
+    Oh, you still have {amount_npc - village_villager_talked} breads left.#speaker:coco #portrait:coco_default #layout:character
+- amount_npc - village_villager_talked == 1:
+    Oh, you still have {amount_npc - village_villager_talked} bread left.#speaker:coco #portrait:coco_default #layout:character
+}
 Make sure to give them all out, alright?#speaker:coco #portrait:coco_happy
 ~ talked("coco")
 -> eol
@@ -182,7 +187,7 @@ I hope all the best for you!#speaker:coco #portrait:coco_happy
 Oh... you're leaving the village?#speaker:coco #portrait:coco_frown #layout: character
 But we've just met...#speaker:coco #portrait:coco_sad
 It's dangerous to go alone! Take this.#speaker:coco #portrait:coco_default
-You have obtained Coco's signature bread.#layout:item
+    You have obtained Coco's signature bread.#layout:item
     Thank you.#speaker:ragi #portrait:ragi_default #layout:character
 Be careful out there!#speaker:coco #portrait:coco_happy
 ~ doneQuest("village_leave_coco")
