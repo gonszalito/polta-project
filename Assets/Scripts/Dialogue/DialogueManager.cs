@@ -12,6 +12,7 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private GameObject portraitPanel;
     [SerializeField] private GameObject continueIcon;
     //To move the dialogue box
     [SerializeField] private GameObject dialogueUI;
@@ -138,7 +139,7 @@ public class DialogueManager : MonoBehaviour
         dialogueVariables.StartListening(currentStory);
         
         displayNameText.text = "";
-        // portraitAnimator.Play("default");
+        // portraitAnimator.Play("venari_default");
         layoutAnimator.Play("character");
 
         ContinueStory();
@@ -154,7 +155,7 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
         displayNameText.text = "";
-
+        
     }
 
     private void ContinueStory() 
@@ -379,35 +380,45 @@ public class DialogueManager : MonoBehaviour
             
             // layoutAnimator.Play("character");
 
+            if(portraitTag != null)
+            {
+                WaitLayoutAnimator(portraitTag);
+            }
+
             switch (tagKey)
             {
                 case LAYOUT_TAG:
                     layoutAnimator.Play(tagValue);
-                    // if(tagValue == "item")
-                    // {
-                    //     dialogueUI.SetActive(false); 
-                    // }
-                    // else if(tagValue == "character")
-                    // {
-                    //     dialogueUI.SetActive(true); 
-                    //     portraitAnimator.Play(portraitTag);
-                    // }
                   break;
                 case SPEAKER_TAG:
                     displayNameText.text = tagValue;
                     break;
                 case PORTRAIT_TAG:
+                    portraitPanel.SetActive(true);
+                    // WaitLayoutAnimator(tagValue);
                     portraitAnimator.Play(tagValue);
-                    portraitTag = tagValue;
+                    // portraitTag = tagValue;
                     break;
                 default:
-                    Debug.Log(tag);
                     break;
             }
 
+            portraitAnimator.Play(tagValue);
         }
+
+
         
     }
+
+    private IEnumerator WaitLayoutAnimator(string tagValue) 
+    {
+        yield return new WaitUntil(() => layoutAnimator.isInitialized);
+        portraitAnimator.Play(tagValue);
+        Debug.Log("coroutine works");
+    }
+
+
+
 
     public Ink.Runtime.Object GetVariableState(string variableName)
     {
