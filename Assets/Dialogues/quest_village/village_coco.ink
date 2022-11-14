@@ -172,7 +172,7 @@ See you around!#speaker:coco #portrait:coco_happy
 Hey Ragi, why did you come here from Polta?#speaker:coco #portrait:coco_default #layout:character
     My father went here and has been missing since.#speaker:ragi #portrait:ragi_default
     I'm looking to reunite with him again.#speaker:ragi #portrait:ragi_default
-I see...#speaker:coco #portrait:coco_frown
+I see...#speaker:coco #portrait:coco_sad
 Let me know if I could help in any way!#speaker:coco #portrait:coco_happy
 ~ doneQuest("village_chat_coco")
 -> eol
