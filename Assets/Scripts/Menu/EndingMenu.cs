@@ -13,9 +13,9 @@ public class EndingMenu : MonoBehaviour
         SelectedButton(endingFirstButton);
     }
 
-    public void BackToMainMenu()
+    public void ToEndingCutscene()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(4);
     }
 
     public void PlaySelectSound()

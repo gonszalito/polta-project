@@ -18,11 +18,27 @@ public class Cutscene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Invoke("GetStarted", ((float)videoLength));
+        if(videoPlayer.clip.name == "Opening")
+        {
+            Invoke("GetStarted", ((float)videoLength));
+        }
+        else if(videoPlayer.clip.name == "Ending")
+        {
+            Invoke("BackToMainMenu", ((float)videoLength));
+        }
+        else
+        {
+            Debug.Log("ERROR: VIDEO NAME NOT FOUND.");
+        }
     }
 
     void GetStarted()
     {
         SceneManager.LoadScene(2);
+    }
+
+    void BackToMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
