@@ -17,6 +17,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
         SelectedButton(mainFirstButton);
     }
     public void PlayGame()
