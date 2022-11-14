@@ -10761,6 +10761,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5439510634381186325}
     - target: {fileID: 41531435574994344, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: portraitPanel
+      value: 
+      objectReference: {fileID: 5439510635793237649}
+    - target: {fileID: 41531435574994344, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
       propertyPath: frequencyLevel
       value: 2
       objectReference: {fileID: 0}
