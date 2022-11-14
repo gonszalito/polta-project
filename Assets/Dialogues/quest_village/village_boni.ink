@@ -30,7 +30,7 @@ Aaah!#speaker:boni #portrait:boni_default #layout:character
 ~ talked("boni")
 -> eol
 
-=== village_villager_boni
+=== village_villager_boni_init
 = start
 Aah!#speaker:boni #portrait:boni_default #layout:character
 Y-you scared me!#speaker:boni #portrait:boni_default
@@ -43,20 +43,24 @@ I usually just sit here.#speaker:boni #portrait:boni_default
 Aah! What is that?!#speaker:boni #portrait:boni_default
 Oh, a bread? Thanks.#speaker:boni #portrait:boni_default
 ~ doneQuest("village_villager_boni")
+->eol
 
 = loop
 I think fishing is not my thing.#speaker:boni #portrait:boni_default #layout:character
 Everytime I caught one, it made me- nvm.#speaker:boni #portrait:boni_default
 ~ talked("boni")
+->eol
 
 
-=== village_leave_boni
+=== village_leave_boni_init
 = start
 Aaah!#speaker:boni #portrait:boni_default #layout:character
 Oh, you're leaving already?#speaker:boni #portrait:boni_default
 Be careful, there might be some.. aaah!#speaker:boni #portrait:boni_default
 ~ doneQuest("village_leave_boni")
+->eol
 
 = loop
 Waaah!#speaker:boni #portrait:boni_default #layout:character
 ~ talked("boni")
+->eol
