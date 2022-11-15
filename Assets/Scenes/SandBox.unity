@@ -3692,7 +3692,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 550843589}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1fe9d086ca0fb41c29d689bb1513929d, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -9574,7 +9574,7 @@ PrefabInstance:
     - target: {fileID: 268871806791062596, guid: 2a078418bdab2d648bf7e6b4b727cf34, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6200000, guid: 1fe9d086ca0fb41c29d689bb1513929d, type: 2}
     - target: {fileID: 268871806791062597, guid: 2a078418bdab2d648bf7e6b4b727cf34, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -9635,6 +9635,10 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 913142963}
+    - target: {fileID: 268871806791062642, guid: 2a078418bdab2d648bf7e6b4b727cf34, type: 3}
+      propertyPath: gravityScale
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a078418bdab2d648bf7e6b4b727cf34, type: 3}
 --- !u!1 &1379349047
@@ -10679,7 +10683,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1518025586}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1fe9d086ca0fb41c29d689bb1513929d, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
@@ -11364,6 +11368,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1595695667}
   - component: {fileID: 1595695669}
+  - component: {fileID: 1595695670}
   m_Layer: 6
   m_Name: Collision
   m_TagString: OneWayPlatform
@@ -11395,7 +11400,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1595695666}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 0f2729fba9394944890be5ee282acb2f, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -11412,6 +11417,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 44}
   m_EdgeRadius: 0
+--- !u!114 &1595695670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595695666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6716eda31792412394aa8f3ed303be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCollision: {fileID: 1152746585}
 --- !u!1 &1610002361
 GameObject:
   m_ObjectHideFlags: 0
@@ -11604,29 +11622,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1050091178}
   parallaxEffect: 0.1
---- !u!1 &1640484316 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 268871806791062595, guid: 2a078418bdab2d648bf7e6b4b727cf34, type: 3}
-  m_PrefabInstance: {fileID: 1372192624}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1640484318 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 268871806791062652, guid: 2a078418bdab2d648bf7e6b4b727cf34, type: 3}
   m_PrefabInstance: {fileID: 1372192624}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1640484321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640484316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f37e385d8df1948209c34949c05d38fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCollider: {fileID: 1152746585}
 --- !u!1 &1641580850
 GameObject:
   m_ObjectHideFlags: 0
@@ -13852,7 +13852,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2047831070}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1fe9d086ca0fb41c29d689bb1513929d, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
