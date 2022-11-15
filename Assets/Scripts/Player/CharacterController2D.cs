@@ -111,8 +111,10 @@ public class CharacterController2D : MonoBehaviour
 
     private void HandleHorizontalMovement()
     {
-        Vector2 moveDirection = InputManager.GetInstance().GetMoveDirection();
-        myRigidbody.velocity = new Vector2(moveDirection.x * runSpeed, myRigidbody.velocity.y);
+        Vector2 moveDirection = InputManager.GetInstance().GetMoveDirection().normalized;
+
+        myRigidbody.velocity = new Vector2(Mathf.Round(moveDirection.x) * runSpeed, myRigidbody.velocity.y);
+
 
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
         // animator.SetBool("isWalking", playerHasHorizontalSpeed);
