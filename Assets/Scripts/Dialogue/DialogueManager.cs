@@ -313,6 +313,7 @@ public class DialogueManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
     }
 
+
     public void MakeChoice(int choiceIndex)
     {
         if (canContinueToNextLine)
