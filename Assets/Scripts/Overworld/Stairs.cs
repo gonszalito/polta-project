@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class Stairs : MonoBehaviour
 {
-    public SpriteRenderer stair;
     public CapsuleCollider2D playerCollision;
-    public Rigidbody2D rb2d;
-
     private void OnCollisionEnter2D(Collision2D other) 
     {
-        if(other.gameObject.CompareTag("Player") && !playerCollision.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if(other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Stair On");
-            stair.sortingOrder = 15;
-            rb2d.gravityScale = 3f;
+            Physics2D.gravity = new Vector2(10f, -10f);
         }
     }
 
@@ -22,9 +17,7 @@ public class Stairs : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Stair Off");
-            stair.sortingOrder = 1;
-            rb2d.gravityScale = 8f;
+            Physics2D.gravity = new Vector2(0f, -10f);
         }
     }
 }
