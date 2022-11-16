@@ -25,6 +25,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Choices UI")]
     [SerializeField] private TextMeshProUGUI questionText;
     [SerializeField] private GameObject[] choices;
+    [SerializeField] private GameObject emptyButton;
     private TextMeshProUGUI[] choicesText;
 
     [Header("Load Globals JSON")]
@@ -42,6 +43,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private float audioVolume = 1;
     [SerializeField] private bool stopAudioSource;
     [SerializeField] private bool makePredictable;
+
 
     private AudioSource audioSource;
 
@@ -310,7 +312,7 @@ public class DialogueManager : MonoBehaviour
         // for at least one frame before we set the current selected object.
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
-        EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
+        EventSystem.current.SetSelectedGameObject(emptyButton.gameObject);
     }
 
     public void MakeChoice(int choiceIndex)
