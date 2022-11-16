@@ -21,6 +21,7 @@ public class DialogueTrigger : MonoBehaviour
     [Header("Position to move")]
     [SerializeField] Transform[] Position;
 
+    private bool questIndicatorState;
     private GameObject player;
     private BoxCollider2D interactTrigger;
     private bool playerInRange;
@@ -36,7 +37,16 @@ public class DialogueTrigger : MonoBehaviour
     }
     
     private void Update() {
-        
+        ChangeVisualCue();
+        if (questIndicatorState && !playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            visualCue.SetActive(true);
+        }
+        else
+        {
+            visualCue.SetActive(false);
+        }
+
         if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
             visualCue.SetActive(true);
@@ -47,10 +57,11 @@ public class DialogueTrigger : MonoBehaviour
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
             }
         }
-        else
+        else if (!questIndicatorState)
         {
             visualCue.SetActive(false);
         }
+  
               
     }
 
@@ -148,15 +159,18 @@ public class DialogueTrigger : MonoBehaviour
          
             if (quest_giver_coco)
             {
+                questIndicatorState = true;
                 animator.Play("QuestDialogue");
 
             }
             else if(!talked_coco)
             {
+                questIndicatorState = false;
                 animator.Play("ActiveDialogue");
             }
             else 
             {
+                questIndicatorState = false;
                 animator.Play("InactiveDialogue");
             }
         }
@@ -166,15 +180,18 @@ public class DialogueTrigger : MonoBehaviour
          
             if (quest_giver_boni)
             {
+                questIndicatorState = true;
                 animator.Play("QuestDialogue");
 
             }
             else if(!talked_boni)
             {
+                questIndicatorState = false;
                 animator.Play("ActiveDialogue");
             }
             else 
             {
+                questIndicatorState = false;
                 animator.Play("InactiveDialogue");
             }
         }
@@ -184,14 +201,17 @@ public class DialogueTrigger : MonoBehaviour
         {
             if (quest_giver_aru)
             {
+                questIndicatorState = true;
                 animator.Play("QuestDialogue");
             }
             else if(!talked_aru)
             {
+                questIndicatorState = false;
                 animator.Play("ActiveDialogue");
             }
             else 
             {
+                questIndicatorState = false;
                 animator.Play("InactiveDialogue");
             }
         }
@@ -200,14 +220,17 @@ public class DialogueTrigger : MonoBehaviour
         {
             if (quest_giver_feru)
             {
+                questIndicatorState = true;
                 animator.Play("QuestDialogue");
             }
             else if(!talked_feru)
             {
+                questIndicatorState = false;
                 animator.Play("ActiveDialogue");
             }
             else 
             {
+                questIndicatorState = false;
                 animator.Play("InactiveDialogue");
             }
         }
@@ -216,14 +239,17 @@ public class DialogueTrigger : MonoBehaviour
         {
             if (quest_giver_guri)
             {
+                questIndicatorState = true;
                 animator.Play("QuestDialogue");
             }
             else if(!talked_guri)
             {
+                questIndicatorState = false;
                 animator.Play("ActiveDialogue");
             }
             else 
             {
+                questIndicatorState = false;
                 animator.Play("InactiveDialogue");
             }
         }
@@ -232,14 +258,17 @@ public class DialogueTrigger : MonoBehaviour
         {
             if (quest_giver_venari)
             {
+                questIndicatorState = true;
                 animator.Play("QuestDialogue");
             }
             else if(!talked_venari)
             {
+                questIndicatorState = false;
                 animator.Play("ActiveDialogue");
             }
             else 
             {
+                questIndicatorState = false;
                 animator.Play("InactiveDialogue");
             }
         }
@@ -248,10 +277,12 @@ public class DialogueTrigger : MonoBehaviour
         {
             if (quest_giver_object_flour)
             {
+                questIndicatorState = true;
                 animator.Play("QuestDialogue");
             }
             else
             {
+                questIndicatorState = false;
                 animator.Play("ActiveDialogue");
             }
             // else 
