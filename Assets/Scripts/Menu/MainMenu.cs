@@ -17,7 +17,8 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        Cursor.visible = false;
+        // Cursor.visible = false;
+        // Cursor.lockState = CursorLockMode.Locked;
         SelectedButton(mainFirstButton);
     }
     public void PlayGame()
