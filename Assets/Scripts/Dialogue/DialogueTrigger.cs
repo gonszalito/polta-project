@@ -21,16 +21,29 @@ public class DialogueTrigger : MonoBehaviour
     [Header("Position to move")]
     [SerializeField] Transform[] Position;
 
+    [Header("Behind of Character")]
+    // [SerializeField] GameObject behindTrigger;
+
+    private Collider2D playerCollider;
+    private GameObject spriteObject;
+    // private Collider2D behindCollider;
     private bool questIndicatorState;
     private GameObject player;
     private BoxCollider2D interactTrigger;
+
+    // private bool isBehind = false;
+    // private bool facingBehind = false;
     private bool playerInRange;
 
       public bool playerIsMoving { get; private set; }
 
     private void Awake() 
     {
+        //Collider to trigger behind moved to own script
+        // behindCollider = behindTrigger.GetComponent<BoxCollider2D>();
         player = GameObject.FindGameObjectWithTag("Player");
+        playerCollider = player.GetComponent<CapsuleCollider2D>();
+        // spriteObject = GameObject.Find("Sprite");
         interactTrigger = this.GetComponent<BoxCollider2D>();
         playerInRange = false;
         visualCue.SetActive(false);
@@ -38,6 +51,7 @@ public class DialogueTrigger : MonoBehaviour
     
     private void Update() {
         ChangeVisualCue();
+        // CheckBehind();
         if (questIndicatorState && !playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
             visualCue.SetActive(true);
@@ -54,6 +68,11 @@ public class DialogueTrigger : MonoBehaviour
 
             if (InputManager.GetInstance().GetInteractPressed())
             {
+                // if (isBehind)
+                // {
+                //     // FlipSprite();
+                //     // facingBehind = true;
+                // }
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
             }
         }
@@ -61,7 +80,14 @@ public class DialogueTrigger : MonoBehaviour
         {
             visualCue.SetActive(false);
         }
-  
+
+        // if (facingBehind == true && !DialogueManager.GetInstance().dialogueIsPlaying)
+        // {
+        //     FlipSprite();
+        //     facingBehind = false;
+        // }
+        
+
               
     }
 
@@ -293,6 +319,25 @@ public class DialogueTrigger : MonoBehaviour
         
     
     }
+
+    // private void FlipSprite()
+    // {
+    //     Vector3 rotateScale = spriteObject.transform.localScale;
+    //     rotateScale.x *= -1;
+    //     spriteObject.transform.localScale = rotateScale;
+    // }
+
+    // private void CheckBehind()
+    // {
+    //     if (behindCollider.IsTouching(playerCollider))
+    //     {
+    //         isBehind = true;
+    //     }
+    //     else
+    //     {
+    //         isBehind = false;
+    //     }
+    // }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {    
