@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 public class BoundaryManager : MonoBehaviour
 {
     public GameObject villageEnterTrigger;
-    public GameObject forrestEnterTrigger;
+    public GameObject rightVillageBoundary;
+    public GameObject leftEndingTrigger;
+    public GameObject rightEndingTrigger;
+    public GameObject endingDirectionArrows;
 
     // Update is called once per frame
     void Update()
@@ -25,7 +28,10 @@ public class BoundaryManager : MonoBehaviour
         {
             Debug.Log("BOUNDARY DEACTIVATED");
             villageEnterTrigger.SetActive(false);
-            forrestEnterTrigger.SetActive(true);
+            rightVillageBoundary.SetActive(false);
+            leftEndingTrigger.SetActive(true);
+            rightEndingTrigger.SetActive(true);
+            endingDirectionArrows.SetActive(true);
         }
     }
 }
