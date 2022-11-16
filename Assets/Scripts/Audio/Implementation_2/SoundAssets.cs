@@ -20,7 +20,7 @@ public class SoundAssets : MonoBehaviour
     [System.Serializable]
     public class SoundAudioClip
     {
-        public SoundManager.Sound sound;
+        // public SoundManager.Sound sound;
         public string soundName;
         public AudioClip audioClip;
         public float timeDelay= 0f;

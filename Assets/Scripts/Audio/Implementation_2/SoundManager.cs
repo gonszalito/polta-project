@@ -77,13 +77,13 @@ public static class SoundManager
 
 
     #region PlaySound Variants
-    public static void PlaySound(Sound sound) 
-    {
-        GameObject soundGameObject = new GameObject("Sound");
-        AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-        audioSource.volume = GetVolume(sound);
-        audioSource.PlayOneShot(GetAudioClip(sound));
-    }
+    // public static void PlaySound(Sound sound) 
+    // {
+    //     GameObject soundGameObject = new GameObject("Sound");
+    //     AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+    //     audioSource.volume = GetVolume(sound);
+    //     audioSource.PlayOneShot(GetAudioClip(sound));
+    // }
 
        public static void PlaySound(string soundName) 
     {
@@ -130,21 +130,21 @@ public static class SoundManager
     
     
     #region GetAudioClip Variants
-    // Try different methods to fetch the sound
-      private static AudioClip GetAudioClip(Sound sound)
-    {
-        foreach(SoundAssets.SoundAudioClip soundAudioClips in SoundAssets.soundAssets.soundAudioClipArray)
-        {
-            if (soundAudioClips.sound == sound)
-            {
-                return soundAudioClips.audioClip;
-            }
-        } 
+    // // Try different methods to fetch the sound
+    //   private static AudioClip GetAudioClip(Sound sound)
+    // {
+    //     foreach(SoundAssets.SoundAudioClip soundAudioClips in SoundAssets.soundAssets.soundAudioClipArray)
+    //     {
+    //         if (soundAudioClips.sound == sound)
+    //         {
+    //             return soundAudioClips.audioClip;
+    //         }
+    //     } 
 
-        Debug.LogError("Sound" + sound + "not found");
-        return null;
+    //     Debug.LogError("Sound" + sound + "not found");
+    //     return null;
 
-    }
+    // }
 
     private static AudioClip GetAudioClip(string soundName)
     {
@@ -194,20 +194,20 @@ public static class SoundManager
         btn.onClick.AddListener(buttonAction);  
     }
 
-    private static float GetVolume(Sound sound)
-    {
-        foreach(SoundAssets.SoundAudioClip soundAudioClips in SoundAssets.soundAssets.soundAudioClipArray)
-        {
-            if (soundAudioClips.sound == sound)
-            {
-                return soundAudioClips.volume;
-            }
-        } 
+    // private static float GetVolume(Sound sound)
+    // {
+    //     foreach(SoundAssets.SoundAudioClip soundAudioClips in SoundAssets.soundAssets.soundAudioClipArray)
+    //     {
+    //         if (soundAudioClips.sound == sound)
+    //         {
+    //             return soundAudioClips.volume;
+    //         }
+    //     } 
 
-        Debug.LogError("String" + sound + "not found");
-        return 0.3f;
+    //     Debug.LogError("String" + sound + "not found");
+    //     return 0.3f;
 
-    }
+    // }
 
     //    private static SoundAudioClip GetSoundAudioClip(string soundName)
     // {
