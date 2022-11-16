@@ -10,27 +10,45 @@ public class PauseMenu : MonoBehaviour
     public static bool gameIsPaused = false;
     public static bool journalIsOpen = false;
     public static bool settingsIsOpen = false;
+    public static bool mainMenuConfirmationIsOpen = false;
+    public static bool quitConfirmationIsOpen = false;
     public GameObject pauseMenuUI;
     public GameObject journalMenuUI;
     public GameObject settingsMenuUI;
-    public GameObject pauseFirstButton, journalFirstButton, settingsFirstButton;
+    public GameObject mainMenuConfirmationUI, quitConfirmationUI;
+    public GameObject pauseFirstButton, journalFirstButton, 
+    settingsFirstButton, mainMenuConfirmationFirstButton, 
+    quitConfirmationFirstButton;
     
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (gameIsPaused && !journalIsOpen && !settingsIsOpen)
+            if (gameIsPaused && !journalIsOpen && !settingsIsOpen
+            && !mainMenuConfirmationIsOpen && !quitConfirmationIsOpen)
             {
                 Resume();
             } 
-            else if (gameIsPaused && journalIsOpen && !settingsIsOpen)
+            else if (gameIsPaused && journalIsOpen && !settingsIsOpen 
+            && !mainMenuConfirmationIsOpen && !quitConfirmationIsOpen)
             {
                 ResumeThroughJournal();
             }
-            else if (gameIsPaused && settingsIsOpen && !journalIsOpen)
+            else if (gameIsPaused && settingsIsOpen && !journalIsOpen
+            && !mainMenuConfirmationIsOpen && !quitConfirmationIsOpen)
             {
                 ResumeThroughSettings();
             } 
+            else if (gameIsPaused && mainMenuConfirmationIsOpen 
+            && !settingsIsOpen && !journalIsOpen && !quitConfirmationIsOpen)
+            {
+                ResumeThroughMainMenuConfirmation();
+            }
+            else if (gameIsPaused && quitConfirmationIsOpen && !settingsIsOpen 
+            && !journalIsOpen && !mainMenuConfirmationIsOpen)
+            {
+                ResumeThroughQuitConfirmation();
+            }
             else
             {
                 Pause();
@@ -52,6 +70,38 @@ public class PauseMenu : MonoBehaviour
         settingsMenuUI.SetActive(true);
         settingsIsOpen = true;
         SelectedButton(settingsFirstButton);
+    }
+
+    public void OpenMainMenuConfirmation()
+    {
+        pauseMenuUI.SetActive(false);
+        mainMenuConfirmationUI.SetActive(true);
+        mainMenuConfirmationIsOpen = true;
+        SelectedButton(mainMenuConfirmationFirstButton);
+    }
+
+    public void OpenQuitConfirmation()
+    {
+        pauseMenuUI.SetActive(false);
+        quitConfirmationUI.SetActive(true);
+        quitConfirmationIsOpen = true;
+        SelectedButton(quitConfirmationFirstButton);
+    }
+
+    public void backMainMenuConfirmation()
+    {
+        pauseMenuUI.SetActive(true);
+        mainMenuConfirmationUI.SetActive(false);
+        mainMenuConfirmationIsOpen = false;
+        SelectedButton(pauseFirstButton);
+    }
+
+    public void backQuitConfirmation()
+    {
+        pauseMenuUI.SetActive(true);
+        quitConfirmationUI.SetActive(false);
+        quitConfirmationIsOpen = false;
+        SelectedButton(pauseFirstButton);
     }
 
     public void BackJournal()
@@ -88,6 +138,26 @@ public class PauseMenu : MonoBehaviour
         gameIsPaused = false;
         PlayPauseClosedSound();
         Debug.Log("THROUGH SETTINGS");
+    }
+
+    void ResumeThroughMainMenuConfirmation()
+    {
+        mainMenuConfirmationUI.SetActive(false);
+        Time.timeScale = 1f;
+        mainMenuConfirmationIsOpen = false;
+        gameIsPaused = false;
+        PlayPauseClosedSound();
+        Debug.Log("THROUGH MAIN MENU CONFIRMATION");
+    }
+
+    void ResumeThroughQuitConfirmation()
+    {
+        quitConfirmationUI.SetActive(false);
+        Time.timeScale = 1f;
+        quitConfirmationIsOpen = false;
+        gameIsPaused = false;
+        PlayPauseClosedSound();
+        Debug.Log("THROUGH QUIT CONFIRMATION");
     }
 
     void Pause()
