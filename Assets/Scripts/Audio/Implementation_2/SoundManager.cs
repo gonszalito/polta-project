@@ -93,10 +93,12 @@ public static class SoundManager
             GameObject soundGameObject = new GameObject("Sound");
             AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
             SoundAssets.SoundAudioClip soundAudioClip = GetSoundAudioClip(soundName);
-            audioSource.volume = GetVolume(soundName);
+            audioSource.volume = GetVolume(soundName) * PlayerPrefs.GetFloat("sfxVolume");
             Debug.Log(soundName + audioSource.volume);
             audioSource.PlayOneShot(GetAudioClip(soundName));
             Debug.Log(audioSource + "this");
+            Debug.Log("sfx volume" + PlayerPrefs.GetFloat("sfxVolume"));
+            Debug.Log("Volume" + audioSource.volume);
 
             corout newInstance = new corout();
             newInstance.DestroySound(GetAudioClip(soundName),soundAudioClip);
