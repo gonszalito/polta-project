@@ -22,7 +22,7 @@ public class PauseMenu : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (InputManager.GetInstance().GetPausePressed() == true && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
             if (gameIsPaused && !journalIsOpen && !settingsIsOpen
             && !mainMenuConfirmationIsOpen && !quitConfirmationIsOpen)

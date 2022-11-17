@@ -171,7 +171,7 @@ public class DialogueManager : MonoBehaviour
             // set text for the current dialogue line
             displayLineCoroutine = StartCoroutine(DisplayLine(currentStory.Continue()));
            
-            audioSource.PlayOneShot(dialogueTypingSoundClips[1], audioVolume);
+            audioSource.PlayOneShot(dialogueTypingSoundClips[1], audioVolume * PlayerPrefs.GetFloat("sfxVolume"));
             HandleTags(currentStory.currentTags);
         }
         else 
@@ -218,7 +218,7 @@ public class DialogueManager : MonoBehaviour
                 // audioSource.pitch = Random.Range(minPitch,maxPitch);
                 // audioSource.PlayOneShot(soundClip);  
             }
-            audioSource.PlayOneShot(dialogueTypingSoundClips[0],audioVolume);
+            audioSource.PlayOneShot(dialogueTypingSoundClips[0],audioVolume * PlayerPrefs.GetFloat("sfxVolume"));
         }
     }
 
