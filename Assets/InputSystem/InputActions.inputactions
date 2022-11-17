@@ -347,6 +347,39 @@
                 },
                 {
                     "name": "",
+                    "id": "27fd4141-a84a-411e-9e72-07c19d7eafb2",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9789dcdb-bc56-4e91-8417-cf1fd7148281",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2bc64e9e-2d99-4e14-88b1-7e710800f1ab",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "09904272-7a59-4acf-adb0-924386600a7a",
                     "path": "<Keyboard>/v",
                     "interactions": "",
