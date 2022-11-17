@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
     private bool jumpPressed = false;
     private bool interactPressed = false;
     private bool submitPressed = false;
+    private bool pausePressed = false;
 
     private static InputManager instance;
 
@@ -80,6 +81,18 @@ public class InputManager : MonoBehaviour
         } 
     }
 
+    public void PausedPressed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            pausePressed = true;
+        }
+        else if (context.canceled)
+        {
+            pausePressed = false;
+        } 
+    }
+
     public Vector2 GetMoveDirection() 
     {
         return moveDirection;
@@ -115,4 +128,10 @@ public class InputManager : MonoBehaviour
         submitPressed = false;
     }
 
+    public bool GetPausePressed()
+    {
+        bool result = pausePressed;
+        pausePressed = false;
+        return result;
+    }
 }

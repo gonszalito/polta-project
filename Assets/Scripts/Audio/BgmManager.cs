@@ -9,6 +9,11 @@ public class BgmManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = PlayerPrefs.GetFloat("musicVolume");
+    }
+
+    private void Update() {
+        audioSource.volume = PlayerPrefs.GetFloat("musicVolume");
     }
 
     private void OnTriggerEnter2D(Collider2D other) 

@@ -7900,7 +7900,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -220}
+  m_AnchoredPosition: {x: 0, y: -20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &973256036
@@ -12415,8 +12415,8 @@ MonoBehaviour:
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 5439510635502307153}
     m_SelectOnDown: {fileID: 5439510635502307153}
-    m_SelectOnLeft: {fileID: 5439510635502307153}
-    m_SelectOnRight: {fileID: 5439510635502307153}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
@@ -13360,6 +13360,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 41531434148333873, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 41531434148333873, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_ActionId
+      value: a439c7ad-d174-45e5-b74d-ecf00ffb19cd
+      objectReference: {fileID: 0}
+    - target: {fileID: 41531434148333873, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_ActionName
+      value: Player/Pause[/Keyboard/escape]
+      objectReference: {fileID: 0}
+    - target: {fileID: 41531434148333873, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 41531434148333873, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 41531434148333873, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1666254247}
+    - target: {fileID: 41531434148333873, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 41531434148333873, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PausedPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 41531434148333873, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InputManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 41531434148333873, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 41531435574994344, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
       propertyPath: maxPitch
       value: 2
@@ -14287,6 +14327,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stair: {fileID: 1357975562}
   playerCollision: {fileID: 1152746585}
+--- !u!114 &1666254247 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 41531434148333878, guid: 12699cfa1fbdd2a48bce9ddf98ffff53, type: 3}
+  m_PrefabInstance: {fileID: 1557793532}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9a3287ceed5c904fa062d9e59746681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1680996827
 GameObject:
   m_ObjectHideFlags: 0
@@ -17786,7 +17837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -20}
+  m_AnchoredPosition: {x: 0, y: -220}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2094528339
