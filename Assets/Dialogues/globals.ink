@@ -1,3 +1,5 @@
+//intro states
+VAR state_intro_cutscene = false
 
 // quest states
 VAR state_village_intro = false
