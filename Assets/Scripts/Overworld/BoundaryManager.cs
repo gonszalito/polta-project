@@ -9,7 +9,6 @@ public class BoundaryManager : MonoBehaviour
     public GameObject rightVillageBoundary;
     public GameObject leftEndingTrigger;
     public GameObject rightEndingTrigger;
-    public GameObject endingDirectionArrows;
 
     // Update is called once per frame
     void Update()
@@ -31,7 +30,6 @@ public class BoundaryManager : MonoBehaviour
             rightVillageBoundary.SetActive(false);
             leftEndingTrigger.SetActive(true);
             rightEndingTrigger.SetActive(true);
-            endingDirectionArrows.SetActive(true);
         }
     }
 }
