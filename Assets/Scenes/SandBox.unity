@@ -8607,6 +8607,7 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 80f6c5383790846248402139eb1a6bf8, type: 2}
+    - {fileID: 11400000, guid: 4913302527ca7481d91e9c3a1bcb8f7b, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -8621,6 +8622,32 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: intro_cutscene
             m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 146205046}
+          m_TargetAssemblyTypeName: DialogueCutscene, Assembly-CSharp
+          m_MethodName: SetCutscene
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 146205046}
+          m_TargetAssemblyTypeName: DialogueCutscene, Assembly-CSharp
+          m_MethodName: SetCutscene
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
           m_CallState: 2
 --- !u!1 &958570710
 GameObject:

@@ -52,7 +52,9 @@ public class DialogueTrigger : MonoBehaviour
     private void Update() {
         ChangeVisualCue();
         // CheckBehind();
-        if (questIndicatorState && !playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying)
+
+
+        if (questIndicatorState && !playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying && !DialogueCutscene.GetInstance().isCutscene)
         {
             visualCue.SetActive(true);
         }
@@ -60,7 +62,7 @@ public class DialogueTrigger : MonoBehaviour
         {
             visualCue.SetActive(false);
         }
-        else
+        else 
         {
             visualCue.SetActive(false);
         }
@@ -120,9 +122,6 @@ public class DialogueTrigger : MonoBehaviour
 
     private void ChangeVisualCue()
     {
-    //     string quest_giver = ((Ink.Runtime.BoolValue) DialogueManager
-    //     .GetInstance()
-    //     .GetVariableState("quest_giver")).value;
 
         bool quest_giver_coco = ((Ink.Runtime.BoolValue) DialogueManager
         .GetInstance()
@@ -183,6 +182,18 @@ public class DialogueTrigger : MonoBehaviour
         bool state_village_bread_flour = ((Ink.Runtime.BoolValue) DialogueManager
         .GetInstance()
         .GetVariableState("state_village_bread_flour")).value;
+
+        bool quest_giver_sign_village_right = ((Ink.Runtime.BoolValue) DialogueManager
+        .GetInstance()
+        .GetVariableState("quest_giver_sign_village_right")).value;
+        
+        bool quest_giver_sign_forest_right = ((Ink.Runtime.BoolValue) DialogueManager
+        .GetInstance()
+        .GetVariableState("quest_giver_sign_forest_right")).value;
+
+        bool quest_giver_sign_forest_left = ((Ink.Runtime.BoolValue) DialogueManager
+        .GetInstance()
+        .GetVariableState("quest_giver_sign_forest_left")).value;
 
         if(interactObject.name == "Coco")
         {
@@ -306,6 +317,60 @@ public class DialogueTrigger : MonoBehaviour
         if(interactObject.name == "Flour")
         {
             if (quest_giver_object_flour)
+            {
+                questIndicatorState = true;
+                animator.Play("QuestDialogue");
+            }
+            else if (playerInRange)
+            {
+                questIndicatorState = false;
+                animator.Play("ActiveDialogue");
+            }
+            // else 
+            // {
+            //     animator.Play("InactiveDialogue");
+            // }
+        }
+
+        if(interactObject.name == "ForestWaypointLeft")
+        {
+            if (quest_giver_sign_forest_left)
+            {
+                questIndicatorState = true;
+                animator.Play("QuestDialogue");
+            }
+            else if (playerInRange)
+            {
+                questIndicatorState = false;
+                animator.Play("ActiveDialogue");
+            }
+            // else 
+            // {
+            //     animator.Play("InactiveDialogue");
+            // }
+        }
+
+        if(interactObject.name == "ForestWaypointRight")
+        {
+            if (quest_giver_sign_forest_right)
+            {
+                questIndicatorState = true;
+                animator.Play("QuestDialogue");
+            }
+            else if (playerInRange)
+            {
+                questIndicatorState = false;
+                animator.Play("ActiveDialogue");
+            }
+            // else 
+            // {
+            //     animator.Play("InactiveDialogue");
+            // }
+        }
+
+        if(interactObject.name == "VillageWaypointRight")
+        {
+            if (quest_giver_sign_village_right)
             {
                 questIndicatorState = true;
                 animator.Play("QuestDialogue");
