@@ -13,7 +13,7 @@ Sides:
 3. village_chat_aru
 */
 
-
+// a
 
 === function refreshtalk
 ~ talked_coco = false
@@ -126,10 +126,16 @@ Sides:
     
 - "village_leave_quit":
     ~ quest_giver_trigger_quit = true
+    ~ quest_giver_sign_forest_right = true
+    ~ quest_giver_sign_forest_left = true
 }
 
 === function doneQuest(quest_name)
 {quest_name:
+
+- "sign_village_right":
+    ~ quest_giver_sign_village_right = false
+
 - "village_intro":
     ~ state_village_intro = true
     ~ queueQuest("village_bread_init")

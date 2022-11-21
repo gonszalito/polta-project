@@ -46,6 +46,10 @@ Hm?#speaker:venari #portrait:venari_default #layout:character
 I've never seen you before.#speaker:venari #portrait:venari_default
 Another Polta escapee, huh.#speaker:venari #portrait:venari_default
 I'm Venari, a hunter. Be careful around the forest.#speaker:venari #portrait:venari_default
+(Her scar..)#speaker:ragi #portrait:ragi_default
+Wanna know how I got this scar, eh?#speaker:venari #portrait:venari_default
+I slipped and fell.#speaker:venari #portrait:venari_default
+...#speaker:ragi #portrait:ragi_default
 (I should give the bread now..)#speaker:ragi #portrait:ragi_default
 * [(Hand over Coco's bread.)]
 Oh, from Coco is it? Thanks.#speaker:venari #portrait:venari_default
@@ -62,13 +66,12 @@ Stay safe.#speaker:venari #portrait:venari_default #layout:character
 Ragi, wasn't it?#speaker:venari #portrait:venari_default #layout:character
 I have some advice for you.#speaker:venari #portrait:venari_default
 Never confront the creatures directly.#speaker:venari #portrait:venari_default
-If you meet one, shout my name.#speaker:venari #portrait:venari_default
+If you meet one, run away from the area.#speaker:venari #portrait:venari_default
 ~ doneQuest("village_chat_venari")
 -> eol
 
 = loop
-Wanna know how I got this scar, eh?#speaker:venari #portrait:venari_default #layout:character
-I slipped and fell.#speaker:venari #portrait:venari_default
+Be careful out there.#speaker:venari #portrait:venari_default #layout:character
 ~ talked("venari")
 -> eol
 

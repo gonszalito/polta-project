@@ -44,6 +44,9 @@ VAR quest_giver_guri = false
 VAR quest_giver_boni = false
 VAR quest_giver_object_flour = false
 VAR quest_giver_trigger_quit = false
+VAR quest_giver_sign_village_right = true
+VAR quest_giver_sign_forest_right = false
+VAR quest_giver_sign_forest_left = false
 
 // npc variables
 CONST amount_npc = 6
