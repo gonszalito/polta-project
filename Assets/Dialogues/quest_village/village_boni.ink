@@ -47,7 +47,7 @@ Oh, a bread? Thanks.#speaker:boni #portrait:boni_default
 
 = loop
 I think fishing is not my thing.#speaker:boni #portrait:boni_default #layout:character
-Everytime I caught one, it made me- nvm.#speaker:boni #portrait:boni_default
+Everytime I caught one, it made me- nevermind.#speaker:boni #portrait:boni_default
 ~ talked("boni")
 ->eol
 

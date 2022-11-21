@@ -36,19 +36,19 @@ It felt awkward.#layout:item
 {talked_loop_guri:
 - 0:
     ~ talked_loop_guri++
-    He prepares the veggies.#layout:item
+    He is preparing the veggies.#layout:item
 - 1:
     ~ talked_loop_guri++
-    He cut the veggies.#layout:item
+    He is cutting the veggies.#layout:item
 - 2:
     ~ talked_loop_guri++
-    He cooks the veggies.#layout:item
+    He is cooking the veggies.#layout:item
 - 3:
     ~ talked_loop_guri++
-    He serves the veggies.#layout:item
+    He is serving the veggies.#layout:item
 - 4:
     ~ talked_loop_guri = 0
-    He feels relieved.#layout:item
+    He felt relieved.#layout:item
     ~ talked("guri")
 }
 
