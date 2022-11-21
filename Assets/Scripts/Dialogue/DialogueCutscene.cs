@@ -20,10 +20,25 @@ public class DialogueCutscene : MonoBehaviour
     // }
     // public DialogueFiles[] dialogueFiles;
 
+    public bool isCutscene{ get; private set; }
+
+    private static DialogueCutscene instance;
+
     private Dictionary<string, TextAsset> inkDictionary;
+
+    public static DialogueCutscene GetInstance() 
+    {
+        return instance;
+    }
 
     private void Awake() 
     {
+        if (instance != null)
+        {
+            Debug.LogWarning("Found more than one Dialogue Cutscene in the scene");
+        }
+        instance = this;
+        this.isCutscene = false;
     }
 
     private void Start() 
@@ -45,5 +60,10 @@ public class DialogueCutscene : MonoBehaviour
 
             DialogueManager.GetInstance().EnterDialogueMode(inkDictionary[dialogueName]);
         
+    }
+
+    public void SetCutscene(bool isCutscene)
+    {
+        this.isCutscene = isCutscene;
     }
 }
