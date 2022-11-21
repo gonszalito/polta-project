@@ -89,7 +89,6 @@ Make sure to tell the others before departing.#speaker:feru #portrait:feru_defau
 -> eol
 
 = loop
-The forest entrance is in the direction where you came from.#speaker:feru #portrait:feru_default
 We will wait for your return.#speaker:feru #portrait:feru_default #layout:character
 ~ talked("feru")
 -> eol

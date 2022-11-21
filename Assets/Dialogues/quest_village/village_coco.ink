@@ -48,7 +48,7 @@ Ragi! Nice to meet you!#speaker:coco #portrait:coco_happy
 You don't look like you're from around here.#speaker:coco #portrait:coco_default
 Could it be.. you're from Polta?#speaker:coco #portrait:coco_sad
     Yes.#speaker:ragi #portrait:ragi_default
-Really?! It has been some time since we see another one from Polta!#speaker:coco #portrait:coco_happy
+Really? It has been some time since we see another one from Polta!#speaker:coco #portrait:coco_happy
 How did you come here?#speaker:coco #portrait:coco_default
 -> choice
 
@@ -133,10 +133,10 @@ Fresh bread from the oven! Hope you like it.#speaker:coco #portrait:coco_happy
 = init
 Since you're here, why don't you introduce yourself to the others?#speaker:coco #portrait:coco_happy #layout:character
 It's safe in the village, so feel free to roam around.#speaker:coco #portrait:coco_default
-Oh and while you're at it, you could give the bread that I have also prepared for the others too!#speaker:coco #portrait:coco_happy
+While you're at it, you could give the bread that I have also prepared for the others too!#speaker:coco #portrait:coco_happy
 What do you think? Will you help me once more?#speaker:coco #portrait:coco_default
     Okay.#speaker:ragi #portrait:ragi_default
-Thanks a bunch!! It's a pleasure to have you here in the village. See you later!#speaker:coco #portrait:coco_happy
+Thanks a bunch! It's a pleasure to have you here in the village. See you later!#speaker:coco #portrait:coco_happy
 ~ doneQuest("village_villager_init")
 -> eol
 
