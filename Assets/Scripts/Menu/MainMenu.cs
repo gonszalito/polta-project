@@ -20,6 +20,15 @@ public class MainMenu : MonoBehaviour
         // Cursor.visible = false;
         // Cursor.lockState = CursorLockMode.Locked;
         SelectedButton(mainFirstButton);
+
+
+        float musicVolume = PlayerPrefs.GetFloat("musicVolume");
+        PlayerPrefs.SetFloat("musicVolume", musicVolume);
+
+        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
+        PlayerPrefs.SetFloat("sfxVolume", sfxVolume);
+  
+        
     }
     public void PlayGame()
     {
