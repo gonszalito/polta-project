@@ -42,7 +42,8 @@ public class DialogueCutscene : MonoBehaviour
     }
 
     public void PlayDialogue(string dialogueName){
-        DialogueManager.GetInstance().EnterDialogueMode(inkDictionary[dialogueName]);
-        Debug.Log("this wprks");
+
+            DialogueManager.GetInstance().EnterDialogueMode(inkDictionary[dialogueName]);
+        
     }
 }

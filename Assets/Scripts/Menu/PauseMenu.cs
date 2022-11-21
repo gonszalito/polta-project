@@ -19,11 +19,30 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseFirstButton, journalFirstButton, 
     settingsFirstButton, mainMenuConfirmationFirstButton, 
     quitConfirmationFirstButton;
+
+    public bool pauseIsOn { get; private set; }
+
+    private static PauseMenu instance;
+
+    public static PauseMenu GetInstance() 
+    {
+        return instance;
+    }
+
+    private void Awake() 
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("Found more than one Pause Menu in the scene");
+        }
+        instance = this;
+    }
     
     void Update()
     {
         if (InputManager.GetInstance().GetPausePressed() == true && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
+            pauseIsOn = true;
             if (gameIsPaused && !journalIsOpen && !settingsIsOpen
             && !mainMenuConfirmationIsOpen && !quitConfirmationIsOpen)
             {
@@ -55,7 +74,24 @@ public class PauseMenu : MonoBehaviour
                 PlayPauseAppearSound();
             }
         }
+        else if(pauseIsOn == true)
+        {
+            StartCoroutine(WaitForPause(pauseIsOn));
+        }
     }
+
+    private IEnumerator WaitForPause(bool pauseIsOn) 
+    {
+        if (pauseIsOn)
+        {
+            yield return new WaitForSeconds(0.1f);
+            // yield return new WaitForFixedUpdate();
+            Debug.Log("waiting");
+            this.pauseIsOn = false;
+        }
+        
+    }
+
     public void OpenJournal()
     {
         pauseMenuUI.SetActive(false);
