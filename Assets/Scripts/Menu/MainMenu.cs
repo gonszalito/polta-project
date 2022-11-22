@@ -32,22 +32,22 @@ public class MainMenu : MonoBehaviour
     {
         if(!PlayerPrefs.HasKey("sfxVolume"))
         {
-            PlayerPrefs.SetFloat("sfxVolume", 0.7);
+            PlayerPrefs.SetFloat("sfxVolume", 0.7f);
         }
         else
         {
             float sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
-            PlayerPrefs.SetFloat("sfxVolume",0.7);
+            PlayerPrefs.SetFloat("sfxVolume",sfxVolume);
         }
 
         if(!PlayerPrefs.HasKey("musicVolume"))
         {
-            PlayerPrefs.SetFloat("musicVolume", 0.7);
+            PlayerPrefs.SetFloat("musicVolume", 0.7f);
         }
         else
         {
             float musicVolume = PlayerPrefs.GetFloat("musicVolume");
-            PlayerPrefs.SetFloat("musicVolume", sfxVolume);
+            PlayerPrefs.SetFloat("musicVolume", musicVolume);
         }
 
     }
