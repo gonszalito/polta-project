@@ -22,14 +22,36 @@ public class MainMenu : MonoBehaviour
         SelectedButton(mainFirstButton);
 
 
-        float musicVolume = PlayerPrefs.GetFloat("musicVolume");
-        PlayerPrefs.SetFloat("musicVolume", musicVolume);
 
-        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
-        PlayerPrefs.SetFloat("sfxVolume", sfxVolume);
+        ConfigureAudio();
   
         
     }
+
+    public void ConfigureAudio()
+    {
+        if(!PlayerPrefs.HasKey("sfxVolume"))
+        {
+            PlayerPrefs.SetFloat("sfxVolume", 0.7);
+        }
+        else
+        {
+            float sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
+            PlayerPrefs.SetFloat("sfxVolume",0.7);
+        }
+
+        if(!PlayerPrefs.HasKey("musicVolume"))
+        {
+            PlayerPrefs.SetFloat("musicVolume", 0.7);
+        }
+        else
+        {
+            float musicVolume = PlayerPrefs.GetFloat("musicVolume");
+            PlayerPrefs.SetFloat("musicVolume", sfxVolume);
+        }
+
+    }
+
     public void PlayGame()
     {
         // Audio Implementation 1
@@ -38,6 +60,12 @@ public class MainMenu : MonoBehaviour
         // Audio Implementation 2
         menuButton = GetComponent<Button>();
         Invoke("GetScene", 0.5f);
+    }
+
+    private void FixeUpdate() 
+    {
+        ConfigureAudio();  
+      
     }
 
      public void OpenSettings()
