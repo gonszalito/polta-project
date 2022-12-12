@@ -12,7 +12,7 @@ public class TriggerEnterChildEnabler : MonoBehaviour
     {   
         if(other.CompareTag("Player") && !playerCollision.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
-            Debug.Log("Stair On");
+            // Debug.Log("Stair On");
             stair.sortingOrder = 15;
             ChildEnabler();
             stair.sortingOrder = 15;
