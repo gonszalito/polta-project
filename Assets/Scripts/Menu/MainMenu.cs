@@ -32,7 +32,7 @@ public class MainMenu : MonoBehaviour
     {
         if(!PlayerPrefs.HasKey("sfxVolume"))
         {
-            PlayerPrefs.SetFloat("sfxVolume", 0.7f);
+            PlayerPrefs.SetFloat("sfxVolume", 1f);
         }
         else
         {
@@ -42,7 +42,7 @@ public class MainMenu : MonoBehaviour
 
         if(!PlayerPrefs.HasKey("musicVolume"))
         {
-            PlayerPrefs.SetFloat("musicVolume", 0.7f);
+            PlayerPrefs.SetFloat("musicVolume", 1f);
         }
         else
         {
